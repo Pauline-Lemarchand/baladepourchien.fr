@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Balades index{% endblock %}
+
+{% block body %}
+    <h1>Balades index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NameBalade</th>
+                <th>PhotoBalade</th>
+                <th>TimeBalade</th>
+                <th>AreaBalade</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for balade in balades %}
+            <tr>
+                <td>{{ balade.id }}</td>
+                <td>{{ balade.nameBalade }}</td>
+                <td>{{ balade.photoBalade }}</td>
+                <td>{{ balade.timeBalade ? balade.timeBalade|date('H:i:s') : '' }}</td>
+                <td>{{ balade.areaBalade }}</td>
+                <td>
+                    <a href="{{ path('app_balades_show', {'id': balade.id}) }}">show</a>
+                    <a href="{{ path('app_balades_edit', {'id': balade.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_balades_new') }}">Create new</a>
+{% endblock %}

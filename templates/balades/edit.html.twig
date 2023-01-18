@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Balades{% endblock %}
+
+{% block body %}
+    <h1>Edit Balades</h1>
+
+    {{ include('balades/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_balades_index') }}">back to list</a>
+
+    {{ include('balades/_delete_form.html.twig') }}
+{% endblock %}
