@@ -1,32 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Balades index{% endblock %}
+{% block title %}Balades{% endblock %}
 
 {% block body %}
-    <h1>Balades index</h1>
+<div class="archi_dash">
+<a class="retour_btn" href="{{ path('dashboard') }}"> <i class="fa-solid fa-arrow-left"></i>RETOUR </a>
+    <h1>Balades</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameBalade</th>
-                <th>PhotoBalade</th>
-                <th>TimeBalade</th>
-                <th>AreaBalade</th>
-                <th>actions</th>
+             
+                <th>Nom de la balade</th>
+                <th>Image de la balade</th>
+                <th>Durée</th>
+                <th>Zone de la balade</th>
+                <th>Activités disponible</th>
+                <th>Créateur</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for balade in balades %}
+       
             <tr>
-                <td>{{ balade.id }}</td>
+                
                 <td>{{ balade.nameBalade }}</td>
-                <td>{{ balade.photoBalade }}</td>
-                <td>{{ balade.timeBalade ? balade.timeBalade|date('H:i:s') : '' }}</td>
+                <td><img src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" width="200" height="150"></td>
+                <td>{{ balade.timeBalade ? balade.timeBalade|date('H:i:') : '' }}h</td>
                 <td>{{ balade.areaBalade }}</td>
+                 <td>
+                    {% for activite in activites %}
+            <ul>  <li class="activite_balade"> {{activite.nameActivite}}</li></ul>
+              {% endfor %}</td>
+                 <td>{{ balade.user.firstnameUser }}</td>
+                
+                
                 <td>
-                    <a href="{{ path('app_balades_show', {'id': balade.id}) }}">show</a>
-                    <a href="{{ path('app_balades_edit', {'id': balade.id}) }}">edit</a>
+              
+                    <a  class="btn" href="{{ path('app_balades_edit', {'id': balade.id}) }}">Modifier</a>
+                      {{ include('balades/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -34,8 +47,10 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
+        
         </tbody>
     </table>
 
-    <a href="{{ path('app_balades_new') }}">Create new</a>
+    <a  class="btn" href="{{ path('app_balades_new') }}">Créer une nouvelle balade</a>
+    </div>
 {% endblock %}

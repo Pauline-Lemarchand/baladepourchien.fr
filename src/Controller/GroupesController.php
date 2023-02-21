@@ -20,6 +20,20 @@ class GroupesController extends AbstractController
             'groupes' => $groupesRepository->findAll(),
         ]);
     }
+    #[Route('/demandegroupes', name: 'app_groupes_back', methods: ['GET'])]
+    public function back(GroupesRepository $groupesRepository): Response
+    {
+        return $this->render('groupes/back.html.twig', [
+            'groupes' => $groupesRepository->findAll(),
+        ]);
+    }
+    #[Route('/newgroupes', name: 'app_groupes_newg', methods: ['GET'])]
+    public function newg(GroupesRepository $groupesRepository): Response
+    {
+        return $this->render('groupes/back.new.html.twig', [
+            'groupes' => $groupesRepository->findAll(),
+        ]);
+    }
 
     #[Route('/new', name: 'app_groupes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GroupesRepository $groupesRepository): Response

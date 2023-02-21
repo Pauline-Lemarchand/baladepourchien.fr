@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,6 +39,22 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?float $phoneUser = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Dogs::class)]
+    private Collection $dog;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Balades::class)]
+    private Collection $balade;
+
+    #[ORM\ManyToMany(targetEntity: Groupes::class, inversedBy: 'user')]
+    private Collection $groupe;
+
+    public function __construct()
+    {
+        $this->dog = new ArrayCollection();
+        $this->balade = new ArrayCollection();
+        $this->groupe = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,6 +159,90 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoneUser(float $phoneUser): self
     {
         $this->phoneUser = $phoneUser;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Dogs>
+     */
+    public function getDog(): Collection
+    {
+        return $this->dog;
+    }
+
+    public function addDog(Dogs $dog): self
+    {
+        if (!$this->dog->contains($dog)) {
+            $this->dog->add($dog);
+            $dog->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDog(Dogs $dog): self
+    {
+        if ($this->dog->removeElement($dog)) {
+            // set the owning side to null (unless already changed)
+            if ($dog->getUser() === $this) {
+                $dog->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Balades>
+     */
+    public function getBalade(): Collection
+    {
+        return $this->balade;
+    }
+
+    public function addBalade(Balades $balade): self
+    {
+        if (!$this->balade->contains($balade)) {
+            $this->balade->add($balade);
+            $balade->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBalade(Balades $balade): self
+    {
+        if ($this->balade->removeElement($balade)) {
+            // set the owning side to null (unless already changed)
+            if ($balade->getUser() === $this) {
+                $balade->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Groupes>
+     */
+    public function getGroupe(): Collection
+    {
+        return $this->groupe;
+    }
+
+    public function addGroupe(Groupes $groupe): self
+    {
+        if (!$this->groupe->contains($groupe)) {
+            $this->groupe->add($groupe);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupes $groupe): self
+    {
+        $this->groupe->removeElement($groupe);
 
         return $this;
     }

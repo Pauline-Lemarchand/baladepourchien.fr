@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}baladepourchien.fr
+			{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('images/LOGO.png') }}">
+	
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+		<script src="https://kit.fontawesome.com/3507128011.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	</head>
+
+	<body>
+		<div class="navigation">
+			<div class="nav-reseaux">
+				<i class="fa-brands fa-square-facebook"></i>
+				<i class="fa-brands fa-instagram"></i>
+				<a class="accueil-nav" href="{{ path('home') }}">Accueil</a>
+			</div>
+			{% if app.user %}
+				<div class="nav-connect">
+
+
+					<a class="nav-link connect" href="{{ path('app_users_show', {'id': app.user.id}) }}">
+						<i class="fa-regular fa-circle-user"></i>
+
+						MON COMPTE
+					</a>
+
+				</div>
+
+			{% else %}
+				<div class="nav-connect">
+
+
+					<a class="nav-link connect" href="{{ path('app_login') }}">
+						<i class="fa-regular fa-circle-user"></i>
+
+						SE CONNECTER
+					</a>
+				</div>
+
+
+			{% endif %}
+
+
+		</div>
+
+		<!-- Page Wrapper -->
+		<div id="wrapper">
+			<div
+				class="nav_dash">
+
+				<!-- Sidebar -->
+				<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+					<hr class="sidebar-divider">
+
+					<div class="sidebar-heading">
+					<a  href="{{ path('dashboard') }}">
+						<h1>Dashboard admin</h1>
+						</a>
+					</div>
+
+
+					<li class="nav-item">
+						<a class="nav-link collapsed" href="{{ path('app_balades_index') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des balades</span>
+						</a>
+
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link collapsed" href="{{ path('app_groupes_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des groupes</span>
+						</a>
+
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link collapsed" href="{{ path('app_dogs_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des chiens</span>
+						</a>
+
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link collapsed" href="{{ path('app_conseils_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des conseils </span>
+						</a>
+
+					</li>
+                    <li class="nav-item">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des prises de contact </span>
+						</a>
+
+					</li>
+					 <li class="nav-item">
+						<a class="nav-link collapsed" href=" {{ path('app_activites_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des activités </span>
+						</a>
+
+					</li>
+					 <li class="nav-item">
+						<a class="nav-link collapsed" href=" {{ path('app_dangers_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des dangers</span>
+						</a>
+
+					</li>
+                     <li class="nav-item">
+						<a class="nav-link collapsed" href="{{ path('app_users_index') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+							<i class="fas fa-fw fa-wrench"></i>
+							<span>Gestion des utilisateurs </span>
+						</a>
+
+					</li>
+				</ul>
+                <hr>
+
+			</div>
+			
+
+			{% block body %}{% endblock %}
+
+
+			<footer>
+				<div class="duo-img-nav">
+					<div class="logo-footer">
+						<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
+					</div>
+					<div class="footer-nav">
+						<nav class="nav-footer">
+							<a href="">Accueil</a>
+							<a href="">Trouver une balade</a>
+							<a href="">Trouver un groupe de balade</a>
+							<a href="">Nos conseils</a>
+							<a href="">Nous contacter</a>
+						</nav>
+					</div>
+				</div>
+
+				<div class="copyright">
+					<a href="">Mentions légales</a>
+					<a href="">Données personnelles</a>
+				</div>
+				<div class="rsx">
+					<i class="fa-brands fa-square-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+				</div>
+
+
+			</footer>
+
+
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+
+			<script src="{{ asset('js/app.js') }}"/></body>
+	</body>
+</html>

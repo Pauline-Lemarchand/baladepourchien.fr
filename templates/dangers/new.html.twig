@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Dangers{% endblock %}
+{% block title %}Nouveau danger{% endblock %}
 
 {% block body %}
-    <h1>Create new Dangers</h1>
+<div class="block-edit">
+    <h1>Ajouter un nouveau danger</h1>
 
-    {{ include('dangers/_form.html.twig') }}
+ {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+ <div class="block_edit_user">
 
-    <a href="{{ path('app_dangers_index') }}">back to list</a>
+  
+ {{ form_label(form.areaDanger) }}
+  {{ form_widget(form.areaDanger,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.nameDanger) }}
+  {{ form_widget(form.nameDanger,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.balade) }}
+  {{ form_widget(form.balade,{'attr': {'class': 'input'}}) }}
+
+
+
+
+  </div>
+ 
+ <button class="btn">{{ button_label|default('Créer') }}</button>
+ {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+ 
+</div>
+    
+    </div>
 {% endblock %}

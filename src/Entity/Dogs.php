@@ -28,6 +28,9 @@ class Dogs
     #[ORM\Column(length: 255)]
     private ?string $ageDog = null;
 
+    #[ORM\ManyToOne(inversedBy: 'dog')]
+    private ?Users $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Dogs
     public function setAgeDog(string $ageDog): self
     {
         $this->ageDog = $ageDog;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

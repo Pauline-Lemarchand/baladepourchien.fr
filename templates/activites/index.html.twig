@@ -1,26 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Activites index{% endblock %}
+{% block title %}Activites{% endblock %}
 
 {% block body %}
-    <h1>Activites index</h1>
+<div class="archi_dash">
+<a class="retour_btn" href="{{ path('dashboard') }}"> <i class="fa-solid fa-arrow-left"></i>RETOUR </a>
+    <h1>Activités et spécificité d'une balade ou d'un chien</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameActivite</th>
-                <th>actions</th>
+                
+                <th>Nom</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for activite in activites %}
             <tr>
-                <td>{{ activite.id }}</td>
+               
                 <td>{{ activite.nameActivite }}</td>
                 <td>
-                    <a href="{{ path('app_activites_show', {'id': activite.id}) }}">show</a>
-                    <a href="{{ path('app_activites_edit', {'id': activite.id}) }}">edit</a>
+                
+                    <a class="btn" href="{{ path('app_activites_edit', {'id': activite.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_activites_new') }}">Create new</a>
+    <a class="btn" href="{{ path('app_activites_new') }}">Créer un nouveau</a>
+    </div>
 {% endblock %}

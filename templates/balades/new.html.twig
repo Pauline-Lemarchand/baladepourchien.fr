@@ -1,11 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Balades{% endblock %}
+{% block title %}Nouvelle Balade{% endblock %}
 
 {% block body %}
-    <h1>Create new Balades</h1>
+   
 
-    {{ include('balades/_form.html.twig') }}
+    
 
-    <a href="{{ path('app_balades_index') }}">back to list</a>
+<div class="block-edit">
+    <h1 class="title-edit">Ajouter une balade</h1>
+
+ {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+ <div class="block_edit_user">
+
+  
+ {{ form_label(form.nameBalade) }}
+  {{ form_widget(form.nameBalade,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.photoBalade) }}
+  {{ form_widget(form.photoBalade,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.timeBalade) }}
+  {{ form_widget(form.timeBalade,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.areaBalade) }}
+  {{ form_widget(form.areaBalade,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.latBalade) }}
+  {{ form_widget(form.latBalade,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.lngBalade) }}
+  {{ form_widget(form.lngBalade,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.danger) }}
+  {{ form_widget(form.danger,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.activite) }}
+  {{ form_widget(form.activite,{'attr': {'class': 'input'}}) }}
+
+  </div>
+   <button class="btn">{{ button_label|default('Save') }}</button>
+ {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+  
+</div>
+
+    
 {% endblock %}

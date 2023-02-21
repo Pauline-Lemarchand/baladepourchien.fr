@@ -1,0 +1,32 @@
+{% extends 'base.admin.html.twig' %}
+
+
+{% block title %}demande entrée à un groupe
+{% endblock %}
+{% block body %}
+<div class="back_dmgroupe">
+<h1>Demandes d'entrer à un groupe</h1>
+  
+  
+<div class=" groupes-dm">
+{% for groupe in groupes %}
+<div class="row ">
+  <div class="col-md-15">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ groupe.nameGroupe }}</h5>
+        <p class="card-text">0 demande(s)</p>
+        <a href="#" class="btn btn-primary">Voir les demandes</a>
+      </div>
+    </div>
+     </div>
+  </div>
+     
+ {% endfor %}
+  </div>
+
+ </div>
+ </div>
+
+ </body></html>
+{% endblock %}

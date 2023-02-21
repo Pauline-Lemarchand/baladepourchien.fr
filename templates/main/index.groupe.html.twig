@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+    
+{% block title %}Groupe de balade{% endblock %}
+
+{% block body %}
+<div class="page_balade">
+ 
+<h1 class="title-balade">Trouver un groupe de balade ! </h1>
+<div class="fiche_balade">
+ {% for groupe in groupes %}
+<div class="card " style="width: 18rem;">
+ 
+  <div class="card-body">
+   <h3 class="card-title">{{ groupe.namegroupe }}</h3>
+   <p>Nombre de membres : </p>
+   
+  
+    <a href="{{ path('app_groupes_show', {'id': groupe.id}) }}" class="btn ">Voir plus</a>
+  </div>
+  
+</div>
+
+{% endfor %}
+</div>
+
+</div>
+{% endblock %}

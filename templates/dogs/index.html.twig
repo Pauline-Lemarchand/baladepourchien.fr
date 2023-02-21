@@ -3,32 +3,39 @@
 {% block title %}Dogs index{% endblock %}
 
 {% block body %}
-    <h1>Dogs index</h1>
+<div class="archi_dash">
+<a class="retour_btn" href="{{ path('dashboard') }}"> <i class="fa-solid fa-arrow-left"></i>RETOUR </a>
+    <h1>Les chiens</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameDog</th>
-                <th>PhotoDog</th>
-                <th>RaceDog</th>
-                <th>DescriptionDog</th>
-                <th>AgeDog</th>
-                <th>actions</th>
+                
+                <th>Nom du chien</th>
+                <th>Photo du chien</th>
+                <th>Race</th>
+                <th>Caractère</th>
+                <th>Age</th>
+                <th>Propriétaire</th>
+              
             </tr>
         </thead>
         <tbody>
         {% for dog in dogs %}
             <tr>
-                <td>{{ dog.id }}</td>
+              
                 <td>{{ dog.nameDog }}</td>
-                <td>{{ dog.photoDog }}</td>
+                <td><img src="{{ asset('uploads/photoDog/' ~ dog.photoDog ) }}" width="100"></td>
                 <td>{{ dog.raceDog }}</td>
                 <td>{{ dog.descriptionDog }}</td>
                 <td>{{ dog.ageDog }}</td>
+                
+                  <td>{{dog.user.nameUser}}</td>
+                
                 <td>
-                    <a href="{{ path('app_dogs_show', {'id': dog.id}) }}">show</a>
-                    <a href="{{ path('app_dogs_edit', {'id': dog.id}) }}">edit</a>
+                   
+                    <a class="btn" href="{{ path('app_dogs_edit', {'id': dog.id}) }}">Modifier</a>
+                    {{ include('dogs/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -39,5 +46,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_dogs_new') }}">Create new</a>
+    <a class="btn" href="{{ path('app_dogs_new') }}">Créer un nouveau chien</a>
+    </div>
 {% endblock %}

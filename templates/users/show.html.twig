@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre compte
+{% endblock %}
+
+{% block body %}
+	<div
+		class="compte_utilisateur">
+		
+		<h1>Bonjour
+			{{ user.nameUser }}</h1>
+	</div>
+	<div class="info_utilisateur2">
+		<div class="bloc_utilisateur">
+			<h2>Vos informations personnelles</h2>
+			<div class="info_utilisateur">
+				<p class="strong">Mon email :</p>
+				{{ user.email }}
+			</div>
+
+			<div class="info_utilisateur">
+				<p class="strong">Mon Prénom :</p>
+				{{ user.nameUser }}
+			</div>
+			<div class="info_utilisateur">
+				<p class="strong">Mon nom :</p>
+				{{ user.firstnameUser }}
+			</div>
+
+			<div class="info_utilisateur">
+				<p class="strong">Mon numéro :</p>
+				0{{ user.phoneUser }}
+			</div>
+			<a class="btn-dm-long" href="{{ path('app_users_edit', {'id': user.id}) }}">Modifier mon compte utilisateur</a>
+<a class="btn-dm-long" href="{{ path('app_logout') }}">Se déconnecter</a>
+
+		<div class="btn_action">
+		<h3>Vous avez des informations à donner ?!</h3>
+		<a class="btn-dm" href="{{ path('app_dangers_new') }}">Signaler un danger</a>
+	<a class="btn-dm" href="{{ path('app_balades_new') }}">Ajouter une balade</a>
+	{# {{ include('users/_delete_form.html.twig') }} #}
+		</div>
+		<h3>Je fais partis de ces groupes :</h3> 
+		<h3>J'ai créé ces balades :</h3>
+		</div>
+
+
+		<div class="info_utilisateurs2">
+
+			<h2>Mon/mes chien(s)</h2>
+
+			<div class="info_chien">
+				
+					{% for dog in user.dog %}
+						<div class="card" style="width: 18rem;">
+						
+							<img class="img_chien" src="{{ asset('uploads/photoDog/' ~ dog.photoDog ) }}" >
+							<div class="card-body">
+								<h5 class="card-title">{{ dog.nameDog }}</h5>
+								<p class="card-text">
+									Âge : {{ dog.ageDog }}
+									</p>
+									<p class="card-text">
+									Race : 
+									{{ dog.raceDog }}</p>
+									<p class="card-text">Description : {{ dog.descriptionDog }}
+									</p>
+							<a class="btn-dm" href="{{ path('app_dogs_edit', {'id': dog.id}) }}" class="btn btn-primary btn_chien">Modifier ses informations</a>
+							</div>
+						</div>
+						{% endfor %}
+        </div>
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+	
+
+
+	
+{% endblock %}

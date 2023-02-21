@@ -1,28 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Groupes index{% endblock %}
+{% block title %}Groupes{% endblock %}
 
 {% block body %}
-    <h1>Groupes index</h1>
+<div class="archi_dash">
+<a class="retour_btn" href="{{ path('dashboard') }}"> <i class="fa-solid fa-arrow-left"></i>RETOUR </a>
+    <h1>Groupes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameGroupe</th>
-                <th>AreaGroupe</th>
-                <th>actions</th>
+              
+                <th>Nom du groupe</th>
+                <th>Zone de balade</th>
+                <th>Nombre de membre</th>
+             
             </tr>
         </thead>
         <tbody>
         {% for groupe in groupes %}
             <tr>
-                <td>{{ groupe.id }}</td>
+             
                 <td>{{ groupe.nameGroupe }}</td>
                 <td>{{ groupe.areaGroupe }}</td>
+                <td></td>
                 <td>
-                    <a href="{{ path('app_groupes_show', {'id': groupe.id}) }}">show</a>
-                    <a href="{{ path('app_groupes_edit', {'id': groupe.id}) }}">edit</a>
+                  
+                    <a class="btn" href="{{ path('app_groupes_edit', {'id': groupe.id}) }}">Modifier</a>
+                    {{ include('groupes/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -33,5 +38,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_groupes_new') }}">Create new</a>
+    <a class="btn" href="{{ path('app_groupes_new') }}">Créer un nouveau groupe</a>
+      </div>
 {% endblock %}

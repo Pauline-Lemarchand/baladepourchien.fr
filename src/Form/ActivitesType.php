@@ -13,6 +13,13 @@ class ActivitesType extends AbstractType
     {
         $builder
             ->add('nameActivite')
+            ->add('balade', EntityType::class, [
+                'class' => Balades::class,
+                'choice_label' => 'nameBalade',
+                'label' => 'Balades',
+                'multiple' => true,
+                'expanded' => true,
+            ])
         ;
     }
 

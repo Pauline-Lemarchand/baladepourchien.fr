@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<div class="archi_dash">
+<a class="retour_btn" href="{{ path('dashboard') }}"> <i class="fa-solid fa-arrow-left"></i>RETOUR </a>
+    <h1>Utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+               
+                <th>Email</th>
+                <th>Roles</th>
+               
+                <th>NameUser</th>
+                <th>FirstnameUser</th>
+                <th>PhoneUser</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+              
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+               
+                <td>{{ user.nameUser }}</td>
+                <td>{{ user.firstnameUser }}</td>
+                <td>{{ user.phoneUser }}</td>
+                <td>
+                    
+                    <a class="btn" href="{{ path('app_users_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_users_new') }}">Ajouter un utilisateur</a>
+    </div>
+{% endblock %}

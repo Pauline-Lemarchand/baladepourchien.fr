@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification compte{% endblock %}
+
+{% block body %}
+
+<div class="block-edit">
+    <h1 class="title-edit">Modifier mon compte</h1>
+
+ {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+ <div class="block_edit_user">
+
+  
+ {{ form_label(form.email) }}
+  {{ form_widget(form.email,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.nameUser) }}
+  {{ form_widget(form.nameUser,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.firstnameUser) }}
+  {{ form_widget(form.firstnameUser,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.phoneUser) }}
+  {{ form_widget(form.phoneUser,{'attr': {'class': 'input'}}) }}
+
+Entrer votre mot de passe
+  {{ form_widget(form.password, {'attr': {'class': 'input'}}) }}
+
+
+
+
+
+  </div>
+  {{ include('users/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+ {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+  
+</div>
+
+  
+
+
+    {# {{ include('users/_delete_form.html.twig') }} #}
+{% endblock %}

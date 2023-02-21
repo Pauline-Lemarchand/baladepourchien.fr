@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+    
+{% block title %}Balade pour chien{% endblock %}
+
+{% block body %}
+<div class="page_balade">
+ 
+<h1 class="title-balade">Trouver votre futur balade ! </h1>
+<div class="fiche_balade">
+{% for balade in balades %}
+<div class="card " style="width: 18rem;">
+ <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
+  <div class="card-body">
+   <h3 class="card-title">{{ balade.nameBalade }}</h3>
+    <h4 class="card-title">Lieu : {{ balade.areaBalade }} </h4>
+    <p class="card-text">Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
+    <a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
+  </div>
+  
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}

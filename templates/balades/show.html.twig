@@ -3,36 +3,29 @@
 {% block title %}Balades{% endblock %}
 
 {% block body %}
-    <h1>Balades</h1>
+<div class="balade_show">
+    <h1>La balades : {{ balade.nameBalade }} </h1>
+<div class="block_balade_show">
+    <div class="show_balade">
+<h2>Vous avez choisis une balade à {{ balade.areaBalade }} </h2>
+            
+               <p>Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}h </p> 
+        
+                  {% for activite in balade.activite %}
+                  
+    
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ balade.id }}</td>
-            </tr>
-            <tr>
-                <th>NameBalade</th>
-                <td>{{ balade.nameBalade }}</td>
-            </tr>
-            <tr>
-                <th>PhotoBalade</th>
-                <td>{{ balade.photoBalade }}</td>
-            </tr>
-            <tr>
-                <th>TimeBalade</th>
-                <td>{{ balade.timeBalade ? balade.timeBalade|date('H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>AreaBalade</th>
-                <td>{{ balade.areaBalade }}</td>
-            </tr>
-        </tbody>
-    </table>
+               <p>Activités disponible : {{activite.nameActivite}} </p>
+                {% endfor %}
+           
+    <a class="btn-dm_show" href="{{ path('balades') }}">Revenir à la liste</a>
 
-    <a href="{{ path('app_balades_index') }}">back to list</a>
-
-    <a href="{{ path('app_balades_edit', {'id': balade.id}) }}">edit</a>
-
-    {{ include('balades/_delete_form.html.twig') }}
+    
+    </div>
+    <div class="show_balade-2">
+    <img class="img_balade_show" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}"alt="">
+    </div>
+    </div>
+</div>
+  
 {% endblock %}

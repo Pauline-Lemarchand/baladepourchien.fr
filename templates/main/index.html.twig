@@ -1,20 +1,232 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Balade pour chien{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/pauli/Documents/balade pour chien/baladepourchien.fr/PROJET/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/pauli/Documents/balade pour chien/baladepourchien.fr/PROJET/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
+{# HAUT DE PAGE================== #}
+<header>
+
+	<div class="display_scroll">
+  
+			<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
+			<nav class="nav_scroll">
+				<div>
+					<a href="{{ path('balades') }}">Trouver une balade</a>
+				</div>
+				<div>
+					<a href="{{ path('groupes') }}">Trouver un groupe de balade</a>
+				</div>
+				<div>
+					<a href="{{ path('conseils') }}">Nos Conseils</a>
+				</div>
+				<div>
+					<a href="{{ path('contact') }}">Nous contacter</a>
+				</div>
+
+			</nav>
+      
+ <button class="close_window">X</button>
+
+		</div>
+
+<div class="haut-page">
+
+<video id="background-video" autoplay loop muted poster="{{ asset('images/video-accueil.mp4') }}">
+<source src="{{ asset('images/video-accueil.mp4') }}" type="video/mp4">
+</video>
+<div class="logo-header">
+<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
 </div>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+       
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('balades') }}" >
+         Trouver une balade
+          </a>
+        </li>
+       
+       <li class="nav-item">
+          <a class="nav-link" href="{{ path('groupes') }}" role="button">
+         Trouver un groupe de balade
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('conseils') }}" role="button">
+         Nos conseils
+          </a>
+        </li>
+         <li class="nav-item ">
+          <a class="nav-link" href="{{ path('contact') }}" >
+       Nous contacter
+          </a>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{# POP UP =================#}
+<div class="btn-dangersdiv">
+<button type="button" class="btn-dangers" data-bs-toggle="modal" data-bs-target="#popup"><i class="fa-sharp fa-solid fa-shield-exclamation"></i> DANGERS POUR VOS CHIENS</button>
+ </div>
+ <div id="popup" class="modal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p>Retrouver les lieux à risque pour vos chiens.</p>
+            </div>
+            <div class="modal-body">
+          <p> La nature peut présenter un dangers pour vos chiens : chenille processionnaire, cyanobactérie. Pour aider à éviter ses liens potentiellements mortelles pour vos chiens nous collaborons pour enregistrer et afficher les lieux qu'il faut éviter. </p>
+          
+             
+            
+            <div class="modal-footer">
+              <a class="btn-voirdangers" href="">Voir les dangers</a>
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+</header>
+
+{# 2EME Bloque ============#}
+
+<div class="find-balade">
+
+<h2>Trouver une balade</h2>
+
+<div class="btn-balade" >
+
+<a class="btn-choix"href="">Guérande</a>
+<a class="btn-choix"href="">La Baule</a>
+<a class="btn-choix"href="">Le Pouliguen</a>
+<a class="btn-choix"href="">St andré</a>
+<a class="btn-choix"href="">Autres</a>
+
+</div>
+
+ <div id="map">
+ 
+ </div>
+
+
+<script type="text/javascript" >
+ {% for balade in balades %}
+ var villes = { "{{ balade.nameBalade }}" : { "lat": {{ balade.latBalade}}, "lon": {{ balade.lngBalade }},}
+	
+};
+console.log({{ balade.latBalade}},{{ balade.lngBalade }},"{{ balade.nameBalade }}")
+ {% endfor %}
+// Fonction d'initialisation de la carte
+
+
+	// Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+map = L.map('map').setView([47.2843726, -2.3951595 ], 11);
+	// Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+	L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+		// Il est toujours bien de laisser le lien vers la source des données
+		attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+		minZoom: 5,
+		maxZoom: 15
+	}).addTo(map);
+	// Nous parcourons la liste des villes
+	{% for balade in balades %}  
+		var marker = L.marker([{{ balade.latBalade}},{{ balade.lngBalade }}]).addTo(map);
+ {% endfor %}
+
+//   var map = L.map('map').setView([47.29475, -2.3599412], 13);
+// var villes={
+// }
+
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
+
+// var marker = L.marker([47.29475, -2.3599412]).addTo(map);
+// marker.bindPopup("<b>La Baule");
+</script>
+
+
+
+</div>
+
+{# 3eme BLOQUE =====================#}
+
+<div class="find-groupe">
+<h2>Trouver un groupe de balade</h2>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <h3>Balade bauloise</h3>
+      <p>zone : La Baule</p>
+      <p>membre : 4 chiens</p>
+      <a href="">Entrer dans ce groupe</a>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <h3>Balade bauloise</h3>
+       <p>zone : La Baule</p>
+      <p>membre : 4 chiens</p>
+        <a href="">Entrer dans ce groupe</a>
+    </div>
+    <div class="carousel-item">
+     <h3>Balade bauloise</h3>
+      <p>zone : La Baule</p>
+      <p>membre : 4 chiens</p>
+        <a href="">Entrer dans ce groupe</a>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<a href="" class="btn-tousgroupes">Voir tous les groupes</a>
+</div>
+
+{# 4eme bloque =======================#}
+<h2 class="h2-conseils">Nos conseils</h2>
+<div class="conseils">
+
+<div class="rouge">
+<h3>Problèmes du harnais ? </h3>
+
+</div>
+<div class="deux-bloques">
+
+<div class="bleu">
+<h3>Un rappel efficace</h3>
+</div>
+<div class="jaune">
+<h3>Shopper vos laisses</h3>
+</div>
+</div>
+</div>
+{# 5eme BLOQUE=================== #}
+<div class="form-actu">
+<h2>Participez à l'actualité de baladepourchien.fr</h2>
+<p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt, Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt </p>
+<div class="btn-actu">
+<a class="nv-balades" href="{{ path('app_balades_new') }}" >Nouvelles balades</a>
+<a class="nv-dangers" href="{{ path('app_dangers_new') }}">Nouveaux dangers</a>
+<a class="nv-conseils" href="" >Nouveaux conseils</a>
+</div>
+</div>
+
+
 {% endblock %}

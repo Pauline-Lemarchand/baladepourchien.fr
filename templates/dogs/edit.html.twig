@@ -1,13 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Dogs{% endblock %}
+
+{% block title %}Modifier {{ dog.nameDog }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Dogs</h1>
+<div class="block-edit_dog">
+    <h1 class="title-edit">Modifier les informations de {{ dog.nameDog }}</h1>
+<img src="{{ asset('uploads/photoDog/' ~ dog.photoDog ) }}" class="edit-dog">
+{{ form_start(form, {'attr': {'class': 'formulaire_2'}}) }}
+  
+ <div class="block_edit_user">
+ {{ form_label(form.nameDog) }}
+  {{ form_widget(form.nameDog,{'attr': {'class': 'input'}}) }}
 
-    {{ include('dogs/_form.html.twig', {'button_label': 'Update'}) }}
+ {{ form_label(form.raceDog) }}
+  {{ form_widget(form.raceDog,{'attr': {'class': 'input'}}) }}
 
-    <a href="{{ path('app_dogs_index') }}">back to list</a>
+ {{ form_label(form.descriptionDog) }}
+  {{ form_widget(form.descriptionDog,{'attr': {'class': 'input'}}) }}
 
-    {{ include('dogs/_delete_form.html.twig') }}
+{{ form_label(form.ageDog) }}
+  {{ form_widget(form.ageDog,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.photoDog) }}
+  {{ form_widget(form.photoDog,{'attr': {'class': 'input'}}) }}
+
+{{ include('dogs/_form.html.twig', {'button_label': 'Sauvegarder les modifications'}) }}
+ {{ include('dogs/_delete_form.html.twig', {'button_label': 'Supprimer ce chien'}) }}
+
+</div>
+   {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+    </div>
 {% endblock %}
