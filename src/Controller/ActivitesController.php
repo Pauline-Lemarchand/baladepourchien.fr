@@ -24,6 +24,9 @@ class ActivitesController extends AbstractController
     #[Route('/new', name: 'app_activites_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitesRepository $activitesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $activite = new Activites();
         $form = $this->createForm(ActivitesType::class, $activite);
         $form->handleRequest($request);
@@ -43,6 +46,9 @@ class ActivitesController extends AbstractController
     #[Route('/{id}', name: 'app_activites_show', methods: ['GET'])]
     public function show(Activites $activite): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('activites/show.html.twig', [
             'activite' => $activite,
         ]);
@@ -51,6 +57,9 @@ class ActivitesController extends AbstractController
     #[Route('/{id}/edit', name: 'app_activites_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Activites $activite, ActivitesRepository $activitesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $form = $this->createForm(ActivitesType::class, $activite);
         $form->handleRequest($request);
 
@@ -69,6 +78,9 @@ class ActivitesController extends AbstractController
     #[Route('/{id}', name: 'app_activites_delete', methods: ['POST'])]
     public function delete(Request $request, Activites $activite, ActivitesRepository $activitesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         if ($this->isCsrfTokenValid('delete'.$activite->getId(), $request->request->get('_token'))) {
             $activitesRepository->remove($activite, true);
         }

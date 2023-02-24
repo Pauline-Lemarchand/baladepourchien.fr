@@ -19,6 +19,9 @@ class DogsController extends AbstractController
     #[Route('/', name: 'app_dogs_index', methods: ['GET'])]
     public function index(DogsRepository $dogsRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('dogs/index.html.twig', [
             'dogs' => $dogsRepository->findAll(),
         ]);
@@ -27,6 +30,9 @@ class DogsController extends AbstractController
     #[Route('/new', name: 'app_dogs_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SluggerInterface $slugger,  DogsRepository $dogsRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $dog = new Dogs();
         $form = $this->createForm(DogsType::class, $dog);
         $form->handleRequest($request);
@@ -79,6 +85,9 @@ class DogsController extends AbstractController
     #[Route('/{id}', name: 'app_dogs_show', methods: ['GET'])]
     public function show(Dogs $dog): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('dogs/show.html.twig', [
             'dog' => $dog,
         ]);
@@ -87,6 +96,9 @@ class DogsController extends AbstractController
     #[Route('/{id}/edit', name: 'app_dogs_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Dogs $dog, DogsRepository $dogsRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $form = $this->createForm(DogsType::class, $dog);
         $form->handleRequest($request);
 
@@ -106,6 +118,9 @@ class DogsController extends AbstractController
     #[Route('/{id}', name: 'app_dogs_delete', methods: ['POST'])]
     public function delete(Request $request, Dogs $dog, DogsRepository $dogsRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         if ($this->isCsrfTokenValid('delete'.$dog->getId(), $request->request->get('_token'))) {
             $dogsRepository->remove($dog, true);
         }

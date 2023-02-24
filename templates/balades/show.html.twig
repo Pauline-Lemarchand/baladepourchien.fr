@@ -19,8 +19,12 @@
                 {% endfor %}
            
     <a class="btn-dm_show" href="{{ path('balades') }}">Revenir à la liste</a>
-
+<a class="btn-dm_show" href="{{ path('balades') }}">Faire vérifier cette balade (pas d'actualité ou fausse information)</a>
     
+
+    <a type="submit" class="btn btn-primary">Signaler</a>
+
+   
     </div>
     <div class="show_balade-2">
     <img class="img_balade_show" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}"alt="">

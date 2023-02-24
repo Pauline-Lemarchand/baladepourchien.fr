@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+   
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -55,6 +57,7 @@
 		</div>
 
 		<!-- Page Wrapper -->
+		{% if is_granted('ROLE_ADMIN') %}
 		<div id="wrapper">
 			<div
 				class="nav_dash">
@@ -135,7 +138,7 @@
                 <hr>
 
 			</div>
-			
+			{% endif %}
 
 			{% block body %}{% endblock %}
 

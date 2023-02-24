@@ -1,3 +1,12 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+# save_user_id:
+#     path: /save-user-id
+#     controller: App\Controller\MainController\confirmer::saveUserIdAction
+#     methods: [POST]
+
+app_signal_balade:
+    path: '/balade/{id}/signal'
+    controller: 'App\Controller\BaladeController::signalBalade'

@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_USER') %}
 	<div
 		class="compte_utilisateur">
 		
@@ -42,6 +43,10 @@
 		</div>
 		<h3>Je fais partis de ces groupes :</h3> 
 		<h3>J'ai créé ces balades :</h3>
+		{% for balade in user.balade %}
+		<li>{{ balade.nameBalade }}</li>
+		
+		{% endfor %}
 		</div>
 
 
@@ -80,6 +85,6 @@
 		</div>
 	
 
-
+{% endif %}
 	
 {% endblock %}

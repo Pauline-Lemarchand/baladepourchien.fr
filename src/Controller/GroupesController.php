@@ -16,6 +16,9 @@ class GroupesController extends AbstractController
     #[Route('/', name: 'app_groupes_index', methods: ['GET'])]
     public function index(GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('groupes/index.html.twig', [
             'groupes' => $groupesRepository->findAll(),
         ]);
@@ -23,6 +26,9 @@ class GroupesController extends AbstractController
     #[Route('/demandegroupes', name: 'app_groupes_back', methods: ['GET'])]
     public function back(GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('groupes/back.html.twig', [
             'groupes' => $groupesRepository->findAll(),
         ]);
@@ -30,6 +36,9 @@ class GroupesController extends AbstractController
     #[Route('/newgroupes', name: 'app_groupes_newg', methods: ['GET'])]
     public function newg(GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('groupes/back.new.html.twig', [
             'groupes' => $groupesRepository->findAll(),
         ]);
@@ -38,6 +47,9 @@ class GroupesController extends AbstractController
     #[Route('/new', name: 'app_groupes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $groupe = new Groupes();
         $form = $this->createForm(GroupesType::class, $groupe);
         $form->handleRequest($request);
@@ -55,8 +67,10 @@ class GroupesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_groupes_show', methods: ['GET'])]
-    public function show(Groupes $groupe): Response
-    {
+    public function show(Groupes $groupe, Request $request): Response
+    { 
+        
+        
         return $this->render('groupes/show.html.twig', [
             'groupe' => $groupe,
         ]);
@@ -65,6 +79,9 @@ class GroupesController extends AbstractController
     #[Route('/{id}/edit', name: 'app_groupes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Groupes $groupe, GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $form = $this->createForm(GroupesType::class, $groupe);
         $form->handleRequest($request);
 
@@ -83,6 +100,9 @@ class GroupesController extends AbstractController
     #[Route('/{id}', name: 'app_groupes_delete', methods: ['POST'])]
     public function delete(Request $request, Groupes $groupe, GroupesRepository $groupesRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         if ($this->isCsrfTokenValid('delete'.$groupe->getId(), $request->request->get('_token'))) {
             $groupesRepository->remove($groupe, true);
         }

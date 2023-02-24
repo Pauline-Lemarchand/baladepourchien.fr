@@ -7,24 +7,21 @@
 
     <table class="table">
         <tbody>
+           
             <tr>
-                <th>Id</th>
-                <td>{{ danger.id }}</td>
-            </tr>
-            <tr>
-                <th>AreaDanger</th>
+                <th>Zone du danger</th>
                 <td>{{ danger.areaDanger }}</td>
             </tr>
             <tr>
-                <th>NameDanger</th>
+                <th>Nom du danger</th>
                 <td>{{ danger.nameDanger }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_dangers_index') }}">back to list</a>
+    <a href="{{ path('app_dangers_index') }}">Revenir à la liste </a>
 
-    <a href="{{ path('app_dangers_edit', {'id': danger.id}) }}">edit</a>
+    <a href="{{ path('app_dangers_edit', {'id': danger.id}) }}">Modifier</a>
 
     {{ include('dangers/_delete_form.html.twig') }}
 {% endblock %}

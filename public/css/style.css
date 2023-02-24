@@ -9,6 +9,7 @@ body {
   align-items: center;
   padding: 10px;
   width: 100%;
+  z-index: 5;
 }
 .navigation .fa-square-facebook {
   font-size: 25px;
@@ -229,41 +230,12 @@ body {
   text-align: center;
   margin: 30px;
 }
-.find-groupe .carousel {
-  border: 1px solid rgba(128, 128, 128, 0.58);
-  width: 60vw;
-  padding: 50px;
-  margin-bottom: 50px;
+.find-groupe .row_groupe_accueil {
+  width: 100%;
 }
-.find-groupe .carousel .carousel-item {
+.find-groupe .col_groupe_accueil {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.find-groupe .carousel a {
-  text-decoration: none;
-  color: white;
-  background-color: #96652A;
-  height: 35px;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.find-groupe .carousel .fa-chevron-left {
-  font-size: 30px;
-  color: black;
-}
-.find-groupe .carousel .fa-chevron-right {
-  font-size: 30px;
-  color: black;
-}
-.find-groupe .carousel h3 {
-  text-align: center;
-}
-.find-groupe .carousel p {
-  text-align: center;
+  justify-content: space-evenly;
 }
 .find-groupe .btn-tousgroupes {
   text-decoration: none;
@@ -488,6 +460,7 @@ footer .fa-instagram {
   align-items: center;
   justify-content: center;
   height: 40vh;
+  z-index: 1;
 }
 
 .img_chien {

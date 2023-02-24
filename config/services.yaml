@@ -6,6 +6,9 @@
 parameters:
     photo_directory: '%kernel.project_dir%/public/uploads/photoDog'
     photo_direction: '%kernel.project_dir%/public/uploads/photoBalade'
+    photo_direction-conseil: '%kernel.project_dir%/public/uploads/photoConseil'
+   
+
 services:
     # default configuration for services in *this* file
     _defaults:

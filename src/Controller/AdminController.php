@@ -15,9 +15,13 @@ class AdminController extends AbstractController
 {
 
    
+
     #[Route('/dashboard', name: "dashboard")]
     public function index()
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
@@ -28,6 +32,9 @@ class AdminController extends AbstractController
  
     public function editUser(Users $user, Request $request,  EntityManagerInterface $entityManager, UsersRepository $usersRepository)
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $userId = $request->get('id');
         $user = $usersRepository->find($userId);
 

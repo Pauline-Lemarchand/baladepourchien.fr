@@ -16,6 +16,9 @@ class DangersController extends AbstractController
     #[Route('/', name: 'app_dangers_index', methods: ['GET'])]
     public function index(DangersRepository $dangersRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         return $this->render('dangers/index.html.twig', [
             'dangers' => $dangersRepository->findAll(),
         ]);
@@ -24,6 +27,9 @@ class DangersController extends AbstractController
     #[Route('/new', name: 'app_dangers_new', methods: ['GET', 'POST'])]
     public function new(Request $request, DangersRepository $dangersRepository): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $danger = new Dangers();
         $form = $this->createForm(DangersType::class, $danger);
         $form->handleRequest($request);
@@ -51,6 +57,9 @@ class DangersController extends AbstractController
     #[Route('/{id}/edit', name: 'app_dangers_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Dangers $danger, DangersRepository $dangersRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         $form = $this->createForm(DangersType::class, $danger);
         $form->handleRequest($request);
 
@@ -69,6 +78,9 @@ class DangersController extends AbstractController
     #[Route('/{id}', name: 'app_dangers_delete', methods: ['POST'])]
     public function delete(Request $request, Dangers $danger, DangersRepository $dangersRepository): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
         if ($this->isCsrfTokenValid('delete'.$danger->getId(), $request->request->get('_token'))) {
             $dangersRepository->remove($danger, true);
         }

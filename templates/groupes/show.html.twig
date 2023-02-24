@@ -1,44 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Groupes{% endblock %}
+{% block title %}Groupes
+{% endblock %}
 
 {% block body %}
-<div class="groupe_block">
-    <h1>{{ groupe.nameGroupe }}</h1>
-    <div class="groupe_show">
-            
-            <p> zone des balades de se groupe :  {{ groupe.areaGroupe }}</p>
-            <p>Ce groupe est adapté pour les chiens qui sont : </p>
-            <p>Chien de ce groupe : </p>
-<div class="btn-groupe">
-    <a class="btn-dm_show" href="{{ path('groupes') }}">Revenir à la liste</a>
-   
-    <div class="btn-dangersdiv">
-<button type="button" class="btn-dm_show" data-bs-toggle="modal" data-bs-target="#popup"><i class="fa-sharp fa-solid fa-shield-exclamation"></i>Demander d'entrer dans ce groupe</button>
- </div>
- <div id="popup" class="modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <p>Vous souhaitez entrer dans le groupe : </p>
-            </div>
-            <div class="modal-body">
-          <p> En cliquant sur confirmer nous allons analyser votre demande pour savoir si vous correspondez aux membres du groupes afin de ne pas eprturber l'équilibre. ne fois votre demande confimé nous vous ajouterons au groupres What'sapp du groupe</p>
-          
-             
-            
-            <div class="modal-footer">
-            
-              <a  href="{{ path('confirmer') }} ">Confirmer</a>
-           <a href="{{ path('groupes') }}" type="button"  >Annuler</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
-</div>
-    </div>
-          
-</div>
-{% endblock %}
+	<div class="groupe_block">
+		<h1>{{ groupe.nameGroupe }}</h1>
+		<div class="groupe_show">
+
+			<p>
+				zone des balades de se groupe :
+				{{ groupe.areaGroupe }}</p>
+			<p>Ce groupe est adapté pour les chiens qui sont :
+			</p>
+			<p>Chien de ce groupe :
+			</p>
+			<div class="btn-groupe">
+				<a class="btn-dm_show" href="{{ path('groupes') }}">Revenir à la liste</a>
+				<a class="btn-dm_show" href="{{ path('groupes') }}">Signaler ce groupe (plus d'actualité ou doublons)</a>
+				<div class="btn-dangersdiv">
+        {% if is_granted('ROLE_USER') %}
+					<button type="button" class="btn-dm_show" data-bs-toggle="modal" data-bs-target="#popup">
+						<i class="fa-sharp fa-solid fa-shield-exclamation"></i>Demander d'entrer dans ce groupe</button>
+				</div>
+				
+					<div id="popup" class="modal">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<p>Vous souhaitez entrer dans le groupe :
+									</p>
+								</div>
+								<div class="modal-body">
+									<p>
+										En cliquant sur confirmer nous allons analyser votre demande pour savoir si vous correspondez aux membres du groupes afin de ne pas eprturber l'équilibre. ne fois votre demande confimé nous vous ajouterons au groupres What'sapp du groupe</p>
+
+
+									<div class="modal-footer">
+
+										<a href="{{ path('confirmer') }} ">Confirmer</a>
+										<form id="user-id-form" method="POST">
+											<input type="hidden" name="user_id" value="{{ app.user.id }}"/>
+											<button id="confirm-button" type="submit">Confirmer</button>
+										</form>
+
+										<a href="{{ path('groupes') }}" type="button">Annuler</a>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+         
+				</div>
+         {% endif %}
+			</div>
+		</div>
+	</div>
+
+</div>{% endblock %}{# 
+	action="{{ path('save_user_id') }}" #}

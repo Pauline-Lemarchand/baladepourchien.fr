@@ -13,6 +13,7 @@ body {
     padding: 10px;
     // position: fixed;
     width: 100%;
+    z-index:5;
    
     .fa-square-facebook{
         font-size: 25px;
@@ -240,43 +241,12 @@ h2{
     text-align: center;
     margin: 30px;
 }
-.carousel{
-    border: 1px solid rgba(128, 128, 128, 0.58);
-    width: 60vw;
-    padding: 50px;
-    margin-bottom: 50px;
-    .carousel-item{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    a{
-        text-decoration: none;
-        color: white;
-        background-color:#96652A;
-        height: 35px;
-        width: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .fa-chevron-left{
-        font-size: 30px;
-        color: black;
-    }
-    .fa-chevron-right{
-        font-size: 30px;
-        color: black;
-    }
-h3{
-    text-align: center;
+.row_groupe_accueil{
+    width: 100%;
 }
-p{
-    text-align: center;
-}
-
+.col_groupe_accueil{
+    display: flex;
+    justify-content: space-evenly;
 }
 .btn-tousgroupes{
     text-decoration: none;
@@ -519,7 +489,7 @@ footer{
     align-items: center;
     justify-content: center;
     height: 40vh;
-
+z-index: 1;
 
 }
 
