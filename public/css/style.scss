@@ -74,6 +74,10 @@ background-color: #2C7FA3;
     width:35px;
     margin: 10px;
 }
+
+.logo-header{
+    height: 100vh;
+}
 .accueil-nav{
     text-decoration: none;
     color: white;
@@ -100,10 +104,20 @@ background-color: #2C7FA3;
         z-index: -1;
       
       }
-    
-    .navbar{
+      .navbar-toggler-icon{
+        display: none;
+      }
+    nav {
+
+    .navbar-responsive {
+display: none;}
+
+
+    }
+    .navbar-centrale{
         height: 100vh;
-    // width: 80vw;
+        align-items: center;
+    display: flex;
     .navbar-collapse{
         justify-content: center;
     }
@@ -848,4 +862,12 @@ width: 100%;
     width: 50vw;
     
     justify-content: space-evenly;
+}
+
+// RESPONSIVE=======================
+
+@media (max-width: 990px) {
+    .navbar-centrale{
+        display: none;
+    }
 }

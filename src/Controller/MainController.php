@@ -53,7 +53,7 @@ class MainController extends AbstractController
         ContactsRepository $contactsRepository,
         Request $request,
         EntityManagerInterface $manager,
-        MailerInterface $mailer
+        // MailerInterface $mailer
     ): Response {
         $contact = new Contacts();
         $form = $this->createForm(ContactsType::class, $contact);
@@ -72,13 +72,13 @@ class MainController extends AbstractController
             //     ['contact' => $contact]
             // );
 
-            $email = (new Email())
-                ->from('me@exemple.com')
-                ->to('youo@exxemple.com')
-                ->subject('test')
-                ->text('test')
-                ->html('test');
-$mailer->send($email);
+//             $email = (new Email())
+//                 ->from('me@exemple.com')
+//                 ->to('youo@exxemple.com')
+//                 ->subject('test')
+//                 ->text('test')
+//                 ->html('test');
+// $mailer->send($email);
 
 
             $this->addFlash(
