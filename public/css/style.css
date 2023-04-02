@@ -29,6 +29,9 @@ body {
   align-items: center;
   color: white;
 }
+.navigation .test {
+  display: none;
+}
 
 .display_scroll {
   background-color: white;
@@ -69,10 +72,6 @@ body {
   margin: 10px;
 }
 
-.logo-header {
-  height: 100vh;
-}
-
 .accueil-nav {
   text-decoration: none;
   color: white;
@@ -89,7 +88,6 @@ body {
 }
 .haut-page #background-video {
   width: 100%;
-  height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
@@ -102,13 +100,12 @@ body {
 .haut-page .navbar-toggler-icon {
   display: none;
 }
-.haut-page nav .navbar-responsive {
-  display: none;
-}
 .haut-page .navbar-centrale {
-  height: 100vh;
+  max-height: 90vh;
   align-items: center;
   display: flex;
+  margin-top: 20%;
+  margin-bottom: 18%;
 }
 .haut-page .navbar-centrale .navbar-collapse {
   justify-content: center;
@@ -139,10 +136,14 @@ body {
   text-shadow: 2px 2px 4px rgb(64, 64, 64);
 }
 
+.navbar-responsive {
+  display: none;
+}
+
 .btn-dangers {
   background-color: #2D3047;
   color: white;
-  height: 10%;
+  height: 15%;
   border: none;
   border-radius: 10px 0px 0px 10px;
 }
@@ -153,7 +154,7 @@ body {
 
 .btn-dangersdiv {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
@@ -202,6 +203,9 @@ body {
   background-color: #2D3047;
 }
 
+.find-balade {
+  margin-top: 5%;
+}
 .find-balade h2 {
   text-align: center;
   margin-top: 10px;
@@ -211,6 +215,7 @@ body {
   align-items: center;
   justify-content: space-around;
   margin-top: 50px;
+  flex-wrap: wrap;
 }
 .find-balade .btn-choix {
   text-decoration: none;
@@ -238,6 +243,12 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.find-groupe .card_groupe {
+  box-shadow: 5px 13px 10px rgba(62, 62, 62, 0.6470588235);
+  text-align: center;
+  background-color: #96652A;
+  color: white;
+}
 .find-groupe h2 {
   text-align: center;
   margin: 30px;
@@ -252,11 +263,15 @@ body {
 .find-groupe .btn-tousgroupes {
   text-decoration: none;
   color: #96652A;
-  font-size: 20px;
+  font-size: 17px;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+}
+.find-groupe .btn-tousgroupes:hover {
+  font-weight: bold;
 }
 
 .h2-conseils {
@@ -277,24 +292,8 @@ body {
 }
 .conseils .rouge {
   border: 10px solid #2D3047;
-  height: 50vh;
   margin-right: 50px;
   width: 40vw;
-  box-shadow: 5px 13px 10px rgba(62, 62, 62, 0.6470588235);
-  text-align: center;
-}
-.conseils .bleu {
-  border: 10px solid #2C7FA3;
-  height: 22vh;
-  margin-bottom: 45px;
-  width: 30vw;
-  box-shadow: 5px 13px 10px rgba(62, 62, 62, 0.6470588235);
-  text-align: center;
-}
-.conseils .jaune {
-  border: 10px solid #96652A;
-  height: 23vh;
-  width: 30vw;
   box-shadow: 5px 13px 10px rgba(62, 62, 62, 0.6470588235);
   text-align: center;
 }
@@ -824,8 +823,67 @@ footer .fa-instagram {
   justify-content: space-evenly;
 }
 
+@media (max-width: 1824px) {
+  .haut-page .navbar-centrale {
+    margin-bottom: 5%;
+  }
+  .find-balade {
+    margin-top: 15%;
+  }
+}
+@media (max-width: 1432px) {
+  .find-balade {
+    margin-top: 12%;
+  }
+}
+@media (max-width: 1332px) {
+  .find-balade {
+    margin-top: 10%;
+  }
+}
+@media (max-width: 1168px) {
+  .find-balade {
+    margin-top: 9%;
+  }
+}
 @media (max-width: 990px) {
+  .find-balade {
+    margin-top: 30%;
+  }
   .navbar-centrale {
     display: none;
+  }
+  .nav-reseaux {
+    display: none;
+  }
+  .navbar-responsive {
+    display: block;
+  }
+  .navbar-toggler {
+    border: solid;
+  }
+  .nav-connect .connect {
+    display: none;
+  }
+  .nav-connect .test {
+    display: contents;
+    font-size: 40px;
+    font-weight: 100;
+  }
+  .resp {
+    color: #fff;
+  }
+  #map {
+    display: none;
+  }
+  .btn-balade {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .btn-choix {
+    margin: 5%;
+  }
+  .btn-dangers {
+    height: 70px;
   }
 }/*# sourceMappingURL=style.css.map */

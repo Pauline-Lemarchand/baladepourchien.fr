@@ -25,6 +25,29 @@
 				<i class="fa-brands fa-instagram"></i>
 				<a class="accueil-nav" href="{{ path('home') }}">Accueil</a>
 			</div>
+<nav class="navbar navbar-expand-lg navbar-responsive ">
+  <div class="container-fluid">
+  
+    <button class="navbar-toggler resp" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav navbar-responsive">
+        <a class="nav-link resp" aria-current="page" href="#">Accueil</a>
+        <a class="nav-link resp" href="#">Trouver une balade</a>
+		 <a class="nav-link resp" href="#">Trouver un groupe de balade</a>
+		  <a class="nav-link resp" href="#">Nos conseils</a>
+		   <a class="nav-link resp" href="#">Nous contacter</a>
+     
+      </div>
+    </div>
+    
+  </div>
+</nav>
+		
+	
+	
+  
 			{% if app.user %}
 				<div class="nav-connect">
 
@@ -46,24 +69,17 @@
 
 						SE CONNECTER
 					</a>
+					
+					<a class="nav-link connect-test" href="{{ path('app_login') }}">
+						<i class="fa-regular fa-circle-user test"></i>
+					</a>
 				</div>
 
 
 			{% endif %}
 
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-dark p-4">
-   
-    <span class="text-muted">Toggleable via the navbar brand.</span>
-  </div>
-</div>
-<nav class="navbar-responsive ">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
+
+
 		</div>
 
 

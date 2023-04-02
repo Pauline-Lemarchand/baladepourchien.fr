@@ -8,44 +8,16 @@
 
 	{# HAUT DE PAGE================== #}
 	<header>
-		{# 
-							<div class="display_scroll">
-						  
-									<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
-									<nav class="nav_scroll">
-										<div>
-											<a href="{{ path('balades') }}">Trouver une balade</a>
-										</div>
-										<div>
-											<a href="{{ path('groupes') }}">Trouver un groupe de balade</a>
-										</div>
-										<div>
-											<a href="{{ path('conseils') }}">Nos Conseils</a>
-										</div>
-										<div>
-											<a href="{{ path('contact') }}">Nous contacter</a>
-										</div>
-						
-									</nav>
-						      
-						 <button class="close_window">Fermer</button>
-						
-								</div> #}
-
 		<div class="haut-page">
-
 			<video id="background-video" autoplay loop muted poster="{{ asset('images/video-accueil.mp4') }}">
 				<source src="{{ asset('images/video-accueil.mp4') }}" type="video/mp4">
 			</video>
 			<div class="logo-header">
 				<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
 			</div>
-
 			<nav class="navbar-centrale navbar-expand-lg bg-body-tertiary">
 				<div class="container-fluid">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+					
 					<div class="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul class="navbar-nav">
 
@@ -91,12 +63,9 @@
 							<p>
 								La nature peut présenter un dangers pour vos chiens : chenille processionnaire, cyanobactérie. Pour aider à éviter ses liens potentiellements mortelles pour vos chiens nous collaborons pour enregistrer et afficher les lieux qu'il faut éviter.
 							</p>
-
-
 							<div class="modal-footer">
 								<a class="btn-voirdangers" href="">Voir les dangers</a>
 								<a class="btn-voirdangers" href="{{ path('home') }}">Fermer</a>
-
 							</div>
 						</div>
 					</div>
@@ -113,11 +82,11 @@
 
 		<div class="btn-balade">
 
-			<a class="btn-choix" href="">Guérande</a>
-			<a class="btn-choix" href="">La Baule</a>
-			<a class="btn-choix" href="">Le Pouliguen</a>
-			<a class="btn-choix" href="">St andré</a>
-			<a class="btn-choix" href="">Autres</a>
+		<div>	<a class="btn-choix" href="">Guérande</a></div>
+		<div>	<a class="btn-choix" href="">La Baule</a></div>
+		<div>	<a class="btn-choix" href="">Le Pouliguen</a></div>
+		<div>	<a class="btn-choix" href="">St andré</a></div>
+		<div>	<a class="btn-choix" href="">Autres</a></div>
 
 		</div>
 
@@ -151,17 +120,7 @@ maxZoom: 15
 {% for balade in balades %}
 var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);{% endfor %}
 
-// var map = L.map('map').setView([47.29475, -2.3599412], 13);
-// var villes={
-// }
 
-// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-// }).addTo(map);
-
-// var marker = L.marker([47.29475, -2.3599412]).addTo(map);
-// marker.bindPopup("<b>La Baule");
 		</script>
 
 
@@ -176,7 +135,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 			<div class="col-md-12 col_groupe_accueil">
 				{% for groupe in groupes|slice(0, 8) %}
 					<div class="card">
-						<div class="card-body">
+						<div class="card-body card_groupe">
 							<h5 class="card-title">{{ groupe.nameGroupe }}</h5>
 							<p class="card-text">zone :
 								{{ groupe.areaGroupe }}</p>
