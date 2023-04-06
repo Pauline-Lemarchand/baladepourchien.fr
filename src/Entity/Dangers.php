@@ -24,6 +24,12 @@ class Dangers
     #[ORM\ManyToMany(targetEntity: Balades::class, mappedBy: 'danger')]
     private Collection $balade;
 
+    #[ORM\Column(length: 255)]
+    private ?string $lat_danger = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lng_danger = null;
+
     public function __construct()
     {
         $this->balade = new ArrayCollection();
@@ -81,6 +87,30 @@ class Dangers
         if ($this->balade->removeElement($balade)) {
             $balade->removeDanger($this);
         }
+
+        return $this;
+    }
+
+    public function getLatDanger(): ?string
+    {
+        return $this->lat_danger;
+    }
+
+    public function setLatDanger(string $lat_danger): self
+    {
+        $this->lat_danger = $lat_danger;
+
+        return $this;
+    }
+
+    public function getLngDanger(): ?string
+    {
+        return $this->lng_danger;
+    }
+
+    public function setLngDanger(string $lng_danger): self
+    {
+        $this->lng_danger = $lng_danger;
 
         return $this;
     }

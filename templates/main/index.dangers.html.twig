@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conseils{% endblock %}
+
+{% block body %}
+<div class="nosdangers">
+
+<h1>Dangers <i class="fa-solid fa-skull-crossbones"></i></h1>
+
+ {% for dangers in dangers %}
+
+<div id="map"></div>
+
+{% endfor %}
+
+		<script type="text/javascript">
+			 {% for dangers in dangers %}
+var villes = {
+"{{ dangers.nameDanger }}": {
+"lat": {{dangers.latdanger }},
+"lon": {{ dangers.lngdanger}}
+}
+
+};
+console.log({{ dangers.latdanger }}, {{ dangers.lngdanger }},"{{ dangers.nameDanger }}"){% endfor %}
+// Fonction d'initialisation de la carte
+
+
+// Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+map = L.map('map').setView([
+47.2843726, -2.3951595
+], 11);
+// Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { // Il est toujours bien de laisser le lien vers la source des données
+attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+minZoom: 5,
+maxZoom: 15
+}).addTo(map);
+// Nous parcourons la liste des villes
+ {% for dangers in dangers %}
+ var myIcon = L.icon({
+    iconUrl: "{{ asset('images/dangers.png') }}",
+
+    iconSize: [20, 20],
+   
+  
+});
+var marker = L.marker([{{ dangers.latdanger }}, {{dangers.lngdanger }}], {icon: myIcon}).addTo(map);{% endfor %}
+
+
+		</script>
+ {% for dangers in dangers %}
+
+ 
+{% endfor %}
+   
+   
+  
+
+
+
+
+</div>
+{% endblock %}
+
+

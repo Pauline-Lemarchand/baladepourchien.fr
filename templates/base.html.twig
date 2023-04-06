@@ -33,11 +33,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav navbar-responsive">
-        <a class="nav-link resp" aria-current="page" href="#">Accueil</a>
-        <a class="nav-link resp" href="#">Trouver une balade</a>
-		 <a class="nav-link resp" href="#">Trouver un groupe de balade</a>
-		  <a class="nav-link resp" href="#">Nos conseils</a>
-		   <a class="nav-link resp" href="#">Nous contacter</a>
+        <a class="nav-link resp" aria-current="page" href="{{ path('home') }}">Accueil</a>
+        <a class="nav-link resp" href="{{ path('balades') }}">Trouver une balade</a>
+		 <a class="nav-link resp" href="{{ path('groupes') }}">Trouver un groupe de balade</a>
+		  <a class="nav-link resp" href="{{ path('conseils') }}">Nos conseils</a>
+		   <a class="nav-link resp" href="{{ path('contact') }}">Nous contacter</a>
      
       </div>
     </div>
@@ -57,7 +57,9 @@
 
 						MON COMPTE
 					</a>
-
+	<a class="nav-link connect-test" href="{{ path('app_login') }}">
+						<i class="fa-regular fa-circle-user test"></i>
+					</a>
 				</div>
 
 			{% else %}
@@ -93,11 +95,11 @@
 				</div>
 				<div class="footer-nav">
 					<nav class="nav-footer">
-						<a href="">Accueil</a>
-						<a href="">Trouver une balade</a>
-						<a href="">Trouver un groupe de balade</a>
-						<a href="">Nos conseils</a>
-						<a href="">Nous contacter</a>
+						<a href="{{ path('home') }}">Accueil</a>
+						<a href="{{ path('balades') }}">Trouver une balade</a>
+						<a href="{{ path('groupes') }}">Trouver un groupe de balade</a>
+						<a href="{{ path('conseils') }}">Nos conseils</a>
+						<a href="{{ path('contact') }}">Nous contacter</a>
 					</nav>
 				</div>
 			</div>

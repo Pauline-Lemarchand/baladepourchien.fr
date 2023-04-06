@@ -64,7 +64,7 @@
 								La nature peut présenter un dangers pour vos chiens : chenille processionnaire, cyanobactérie. Pour aider à éviter ses liens potentiellements mortelles pour vos chiens nous collaborons pour enregistrer et afficher les lieux qu'il faut éviter.
 							</p>
 							<div class="modal-footer">
-								<a class="btn-voirdangers" href="">Voir les dangers</a>
+								<a class="btn-voirdangers" href="{{ path('dangers') }}">Voir les dangers</a>
 								<a class="btn-voirdangers" href="{{ path('home') }}">Fermer</a>
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 
 	<div class="find-balade">
 
-		<h2>Trouver une balade</h2>
+		<h2 >Trouver une balade</h2>
 
 		<div class="btn-balade">
 
@@ -156,7 +156,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 	<h2 class="h2-conseils">Nos conseils</h2>
 	<div class="conseils">
 		{% for conseil in conseils|slice(0, 3) %}
-			<div class="rouge">
+			<div class="card_conseil">
 				<div class="row row_groupe_accueil">
 					<div class="col-md-12 col_groupe_accueil">
 

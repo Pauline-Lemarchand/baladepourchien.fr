@@ -32,6 +32,9 @@ class Contacts
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $createAt = null;
 
+    #[ORM\Column]
+    private ?bool $RGPD = null;
+
    
     public function __construct()
     {
@@ -100,6 +103,18 @@ class Contacts
     public function setCreateAt(\DateTimeImmutable $createAt): self
     {
         $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    public function isRGPD(): ?bool
+    {
+        return $this->RGPD;
+    }
+
+    public function setRGPD(bool $RGPD): self
+    {
+        $this->RGPD = $RGPD;
 
         return $this;
     }

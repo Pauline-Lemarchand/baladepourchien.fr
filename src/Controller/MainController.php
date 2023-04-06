@@ -7,6 +7,7 @@ use App\Entity\Contacts;
 use App\Form\ContactsType;
 use App\Service\MailService;
 use App\Repository\BaladesRepository;
+use App\Repository\DangersRepository;
 use App\Repository\GroupesRepository;
 use App\Repository\ConseilsRepository;
 use App\Repository\ContactsRepository;
@@ -64,22 +65,6 @@ class MainController extends AbstractController
             $manager->persist($contact);
             $manager->flush();
 
-            // Email
-            // $mailService->sendEmail(
-            //     $contact->getEmail(),
-            //     $contact->getSubject(),
-            //     'emails/contact.html.twig',
-            //     ['contact' => $contact]
-            // );
-
-//             $email = (new Email())
-//                 ->from('me@exemple.com')
-//                 ->to('youo@exxemple.com')
-//                 ->subject('test')
-//                 ->text('test')
-//                 ->html('test');
-// $mailer->send($email);
-
 
             $this->addFlash(
                 'success',
@@ -88,12 +73,6 @@ class MainController extends AbstractController
 
             return $this->redirectToRoute('contact');
         }
-        // } else {
-        //     $this->addFlash(
-        //         'danger',
-        //         $form->getErrors()
-        //     );
-        // }
 
 
 
@@ -110,6 +89,15 @@ class MainController extends AbstractController
             'balades' => $baladesRepository->findAll(),
         ]);
     }
+
+    #[Route('/nosdangers', name: 'dangers')]
+    public function dangers(DangersRepository $dangersRepository): Response
+    {
+        return $this->render('main/index.dangers.html.twig', [
+            'dangers' => $dangersRepository->findAll(),
+        ]);
+    }
+
     #[Route('/envoieconfirme', name: 'confirmer')]
     public function confimer(BaladesRepository $baladesRepository, Request $request): Response
     {
