@@ -753,6 +753,10 @@ footer .fa-instagram {
   font-weight: 100;
 }
 
+.card_balade {
+  border: 3px solid #2C7FA3;
+}
+
 .groupe_block {
   height: 70vh;
   text-align: center;
@@ -954,4 +958,7 @@ footer .fa-instagram {
   .btn-dangers {
     height: 70px;
   }
+}
+.politiquedeconf {
+  margin: 100px;
 }/*# sourceMappingURL=style.css.map */

@@ -35,7 +35,7 @@
       <div class="navbar-nav navbar-responsive">
         <a class="nav-link resp" aria-current="page" href="{{ path('home') }}">Accueil</a>
         <a class="nav-link resp" href="{{ path('balades') }}">Trouver une balade</a>
-		 <a class="nav-link resp" href="{{ path('groupes') }}">Trouver un groupe de balade</a>
+		<a href="">Rejoindre notre goupe de balade</a>
 		  <a class="nav-link resp" href="{{ path('conseils') }}">Nos conseils</a>
 		   <a class="nav-link resp" href="{{ path('contact') }}">Nous contacter</a>
      
@@ -97,7 +97,7 @@
 					<nav class="nav-footer">
 						<a href="{{ path('home') }}">Accueil</a>
 						<a href="{{ path('balades') }}">Trouver une balade</a>
-						<a href="{{ path('groupes') }}">Trouver un groupe de balade</a>
+						<a href="">Rejoindre notre goupe de balade</a>
 						<a href="{{ path('conseils') }}">Nos conseils</a>
 						<a href="{{ path('contact') }}">Nous contacter</a>
 					</nav>
@@ -105,8 +105,8 @@
 			</div>
 
 			<div class="copyright">
-				<a href="">Mentions légales</a>
-				<a href="">Données personnelles</a>
+				<a href="{{path('mentionslegales')}}">Mentions légales</a>
+				<a href="{{ path('politiquedeconfidentialite') }}">Politique de confidentialité</a>
 			</div>
 			<div class="rsx">
 				<i class="fa-brands fa-square-facebook"></i>

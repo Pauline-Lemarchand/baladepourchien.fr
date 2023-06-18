@@ -41,12 +41,15 @@
 	<a class="btn-dm" href="{{ path('app_balades_new') }}">Ajouter une balade</a>
 	{# {{ include('users/_delete_form.html.twig') }} #}
 		</div>
-		<h3>Je fais partis de ces groupes :</h3> 
+	
 		<h3>J'ai créé ces balades :</h3>
 		{% for balade in user.balade %}
 		<li>{{ balade.nameBalade }}</li>
 		
 		{% endfor %}
+		{% if is_granted('ROLE_ADMIN') %}
+		<a class="btn-dm"  href="{{path('dashboard')}}">Accerder au dashboard </a>
+		{% endif %}
 		</div>
 
 

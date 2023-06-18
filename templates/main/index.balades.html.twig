@@ -9,7 +9,7 @@
 <h1 class="title-balade">Trouver votre futur balade ! </h1>
 <div class="fiche_balade">
 {% for balade in balades %}
-<div class="card " style="width: 18rem;">
+<div class="card card_balade " style="width: 18rem;">
  <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
   <div class="card-body">
    <h3 class="card-title">{{ balade.nameBalade }}</h3>

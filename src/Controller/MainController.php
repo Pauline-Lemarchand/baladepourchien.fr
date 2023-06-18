@@ -97,6 +97,20 @@ class MainController extends AbstractController
             'dangers' => $dangersRepository->findAll(),
         ]);
     }
+    #[Route('/mentionslegales', name: 'mentionslegales')]
+    public function mentionslegales(): Response
+    {
+        return $this->render('main/mentionslegales.html.twig', [
+            
+        ]);
+    }
+    #[Route('/politiquedeconfidentialite', name: 'politiquedeconfidentialite')]
+    public function politiquedeconfidentialite(): Response
+    {
+        return $this->render('main/politiquedeconf.html.twig', [
+            
+        ]);
+    }
 
     #[Route('/envoieconfirme', name: 'confirmer')]
     public function confimer(BaladesRepository $baladesRepository, Request $request): Response

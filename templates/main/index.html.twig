@@ -28,8 +28,8 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('groupes') }}" role="button">
-									Trouver un groupe de balade
+								<a class="nav-link" href="" role="button">
+									Rejoindre le groupe de balade
 								</a>
 							</li>
 							<li class="nav-item">
@@ -129,21 +129,11 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 	{# 3eme BLOQUE =====================#}
 
 	<div class="find-groupe">
-		<h2>Trouver un groupe de balade</h2>
+		<h2>Rejoindre le groupe de balade</h2>
 
 		<div class="row row_groupe_accueil">
 			<div class="col-md-12 col_groupe_accueil">
-				{% for groupe in groupes|slice(0, 8) %}
-					<div class="card">
-						<div class="card-body card_groupe">
-							<h5 class="card-title">{{ groupe.nameGroupe }}</h5>
-							<p class="card-text">zone :
-								{{ groupe.areaGroupe }}</p>
-							<p class="card-text">membre : 4 chiens</p>
-							<a href="#" class="btn-tousgroupes">Entrer dans ce groupe</a>
-						</div>
-					</div>
-				{% endfor %}
+			
 			</div>
 		</div>
 

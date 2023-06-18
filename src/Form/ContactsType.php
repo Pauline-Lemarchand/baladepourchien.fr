@@ -7,11 +7,13 @@ use App\Entity\Contacts;
 use Symfony\Component\Form\AbstractType;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints as Assert;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 
@@ -69,6 +71,10 @@ class ContactsType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank()
                 ]
+            ])
+            ->add('RGPD', CheckboxType::class, [
+                'label'    => 'Accepter les conditions mentionnées ci-dessus et la politique de confidentialité',
+                'required' => true,
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
