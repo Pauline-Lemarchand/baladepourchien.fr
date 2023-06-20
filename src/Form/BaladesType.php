@@ -49,8 +49,14 @@ class BaladesType extends AbstractType
                 'minutes' => range(0, 59, 30)
                
             ])
-            ->add('areaBalade',  TextType::class,[
-                'label' => 'Zone de votre balade'
+            ->add('areaBalade',  ChoiceType::class,[
+                'label' => 'Zone de votre balade',
+                'choices' => [
+                    'La Baule' => 'La Baule',
+                    'Pornichet' => 'Pornichet',
+                    'Guérande' => 'Guérande',
+                    'Saint-andré-des-eaux' => 'Saint-andré-des-eaux',
+                ],
             ]) 
             ->add('danger', EntityType::class, [
                 'class' => Dangers::class,

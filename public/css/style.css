@@ -727,8 +727,11 @@ footer .fa-instagram {
   flex-wrap: wrap;
 }
 
-.page_balade {
-  height: 70vh;
+.select_balade {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .show_balade {

@@ -7,8 +7,53 @@
 <div class="page_balade">
  
 <h1 class="title-balade">Trouver votre futur balade ! </h1>
+
+<div id="map"></div>
+
+
+		<script type="text/javascript">
+			{% for balade in balades %}
+var villes = {
+"{{ balade.nameBalade }}": {
+"lat": {{ balade.latBalade }},
+"lon": {{ balade.lngBalade }}
+}
+
+};
+console.log({{ balade.latBalade }}, {{ balade.lngBalade }},"{{ balade.nameBalade }}"){% endfor %}
+// Fonction d'initialisation de la carte
+
+
+// Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+map = L.map('map').setView([
+47.2843726, -2.3951595
+], 11);
+// Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { // Il est toujours bien de laisser le lien vers la source des données
+attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+minZoom: 5,
+maxZoom: 15
+}).addTo(map);
+// Nous parcourons la liste des villes
+{% for balade in balades %}
+var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);{% endfor %}
+
+
+		</script>
+    <div class="select_balade">
+    Localisation de votre balade
+   <select id="selectZone">
+  <option value="all">Toutes les zones</option>
+  <option value="La Baule">La Baule</option>
+  <option value="Pornichet">Pornichet</option>
+  <option value="Guérande">Guérande</option>
+  <option value="Saint-andré-des-eaux">Saint-andré-des-eaux</option>
+</select>
+
+</div>
 <div class="fiche_balade">
 {% for balade in balades %}
+
 <div class="card card_balade " style="width: 18rem;">
  <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
   <div class="card-body">
@@ -23,4 +68,5 @@
 {% endfor %}
 </div>
 </div>
+
 {% endblock %}
