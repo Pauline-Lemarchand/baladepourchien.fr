@@ -45,7 +45,9 @@ maxZoom: 15
    
   
 });
-var marker = L.marker([{{ dangers.latdanger }}, {{dangers.lngdanger }}], {icon: myIcon}).addTo(map);{% endfor %}
+
+var marker = L.marker([{{ dangers.latdanger }}, {{dangers.lngdanger }}], {icon: myIcon}).addTo(map).bindPopup('{{dangers.nameDanger}}')
+    ;{% endfor %}
 
 
 		</script>

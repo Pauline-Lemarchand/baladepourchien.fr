@@ -1,34 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Conseils{% endblock %}
+{% block title %}Balades{% endblock %}
 
 {% block body %}
-    <h1>Conseils</h1>
+<div class="balade_show">
+    <h1>{{ conseil.titleConseil  }} </h1>
+<div class="block_balade_show">
+    <div class="show_balade">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ conseil.id }}</td>
-            </tr>
-            <tr>
-                <th>TitleConseil</th>
-                <td>{{ conseil.titleConseil }}</td>
-            </tr>
-            <tr>
-                <th>TextConseil</th>
-                <td>{{ conseil.textConseil }}</td>
-            </tr>
-            <tr>
-                <th>PhotoConseil</th>
-                <td>{{ conseil.photoConseil }}</td>
-            </tr>
-        </tbody>
-    </table>
+  <p  class="card-title" >{{ conseil.textConseil }}</p>
+            
+              
+    <a class="btn-dm_show" href="{{ path('conseils') }}">Revenir à la liste</a>
 
-    <a href="{{ path('app_conseils_index') }}">back to list</a>
+   
+     <img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" >
+   
+    </div>
+   </div>
+  
+   </div>
 
-    <a href="{{ path('app_conseils_edit', {'id': conseil.id}) }}">edit</a>
-
-    {{ include('conseils/_delete_form.html.twig') }}
+</div>
 {% endblock %}

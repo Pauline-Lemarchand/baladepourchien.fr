@@ -1,1 +1,23 @@
 {% extends 'base.html.twig' %}
+{% block title %}Conseils cannin{% endblock %}
+
+{% block body %}
+<h1 class="title-balade" >Nos meilleurs conseils, pour que votre chien soit bien dans ses coussinets ! </h1>
+<div class="fiche_balade">
+
+{% for conseil in conseils %}
+
+<div class="card card_balade " style="width: 18rem;">
+ <img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" >
+  <div class="card-body">
+   <h3 class="card-title">{{ conseil.titleConseil }}</h3>
+    
+   <p  class="card-title" >{{ conseil.textConseil }}</p>
+    <a href="{{ path('app_conseils_show', {'id': conseil.id}) }}" class="btn ">Voir plus</a>
+  </div>
+  
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}

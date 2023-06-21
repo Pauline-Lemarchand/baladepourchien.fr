@@ -33,10 +33,10 @@ class MainController extends AbstractController
         ]);
     }
     #[Route('/nosconseils', name: 'conseils')]
-    public function conseils(BaladesRepository $baladesRepository): Response
+    public function conseils(ConseilsRepository $conseilsRepository): Response
     {
         return $this->render('main/index.conseils.html.twig', [
-            'balades' => $baladesRepository->findAll(),
+            'conseils' => $conseilsRepository->findAll(),
 
         ]);
     }
