@@ -1,65 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Balades{% endblock %}
+{% block title %}Balades
+{% endblock %}
 
 {% block body %}
-<div class="balade_show">
-    <h1>La balades : {{ balade.nameBalade }} </h1>
-<div class="block_balade_show">
-    <div class="show_balade">
-<h2>Vous avez choisis une balade à {{ balade.areaBalade }} </h2>
-            
-               <p>Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}h </p> 
-        
-                  {% for activite in balade.activite %}
-                  
-    
+	<div class="balade_show">
+		<h1>La balades :
+			{{ balade.nameBalade }}
+		</h1>
+		<div class="block_balade_show">
+			<div class="show_balade">
+				<h2>Vous avez choisis une balade à
+					{{ balade.areaBalade }}
+				</h2>
 
-               <p>Activités disponible : {{activite.nameActivite}} </p>
-                {% endfor %}
-           
-    <a class="btn-dm_show" href="{{ path('balades') }}">Revenir à la liste</a>
+				<p>Durée :
+					{{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}h
+				</p>
 
-    <a type="submit" class="btn btn-primary">Signaler</a>
+				{% for activite in balade.activite %}
 
+
+					<p>Activités disponible :
+						{{activite.nameActivite}}
+					</p>
+				{% endfor %}
+
+				<a class="btn-dm_show" href="{{ path('balades') }}">Revenir à la liste</a>
+
+				<a type="submit" class="btn btn-primary">Signaler</a>
+
+
+			</div>
+      <div class="photo-balade">
    
-    </div>
-   </div>
-   <div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-     <img src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" width="200">
-    </div>
-    <div class="carousel-item">
-        <img src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" width="200">
-    </div>
-    <div class="carousel-item">
-       <img src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" width="200">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-   </div>
-    {# <img class="img_balade_show" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}"alt=""> #}
-    <div id="map"></div>
-
-
-		<script type="text/javascript">
+					<img src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" width="400">
 			
-var villes = {
+				
+		</div>
+		</div>
+	
+
+	</div>
+	{# <img class="img_balade_show" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}"alt=""> #}
+	<div id="map"></div>
+
+
+	<script type="text/javascript">
+
+		var villes = {
 "{{ balade.nameBalade }}": {
 "lat": {{ balade.latBalade }},
 "lon": {{ balade.lngBalade }}
@@ -83,12 +72,7 @@ maxZoom: 15
 // Nous parcourons la liste des villes
 
 var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);
+	</script>
 
 
-		</script>
-    
-    
-    
-</div>
-  
-{% endblock %}
+</div>{% endblock %}

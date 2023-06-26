@@ -319,7 +319,7 @@ body {
         font-size: 17px;
         background-color: #fff;
         height: 30px;
-        width: 400px;
+       
         display: flex;
         align-items: center;
         justify-content: center;
@@ -810,7 +810,25 @@ footer {
 }
 
 // PAGE TROUVER UNE BALADE ===================
-
+.bouton-balade{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .btn-choix {
+        text-decoration: none;
+        color: white;
+        background-color: #2C7FA3;
+        height: 35px;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }}
+.index-balade-choix{
+    display: flex;
+    justify-content: space-evenly;
+flex-wrap: wrap;
+}
 .title-balade {
     text-align: center;
 }

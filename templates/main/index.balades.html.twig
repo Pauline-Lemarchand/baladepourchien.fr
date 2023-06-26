@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-    
-{% block title %}Balade pour chien{% endblock %}
+
+{% block title %}Balade pour chien
+{% endblock %}
 
 {% block body %}
-<div class="page_balade">
- 
-<h1 class="title-balade">Trouver votre futur balade ! </h1>
+	<div class="page_balade">
 
-<div id="map"></div>
+		<h1 class="title-balade">Trouver votre futur balade !
+		</h1>
+
+		<div id="map"></div>
 
 
 		<script type="text/javascript">
@@ -37,76 +39,47 @@ maxZoom: 15
 // Nous parcourons la liste des villes
 {% for balade in balades %}
 var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);{% endfor %}
+		</script>
+<div class="bouton-balade">
+		<button type="button" class="btn-choix" data-filter="all">Toutes les balades</button>
+		<button type="button" class="btn-choix" data-filter=".Baule">La baule</button>
+		<button type="button" class="btn-choix" data-filter=".Pornichet">Pornichet</button>
+		<button type="button" class="btn-choix" data-filter=".Guérande">Guérande</button>
+    <button type="button" class="btn-choix" data-filter=".Pouliguen">Le Pouliguen</button>
+    <button type="button" class="btn-choix" data-filter=".Saint-andré-des-eaux">Saint-André</button>
+		</div>
+    <div class="container index-balade-choix">
+
+			{% for balade in balades %}
+				<div class="mix card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
+					<img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}">
+					<div class="card-body">
+						<h3 class="card-title">{{ balade.nameBalade }}</h3>
+						<h4 class="card-title">Lieu :
+							{{ balade.areaBalade }}
+						</h4>
+						<p class="card-text">Durée :
+							{{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
+						<a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
+					</div>
 
 
+				</div>
+
+			
+
+			{% endfor %}
+      
+		</div>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="../js/mixitup.js"></script>
+		<script>
+			var mixer = mixitup(".container");
 		</script>
 
-<button type="button" data-filter="all">All</button>
-<button type="button" data-filter=".Baule">La baule</button>
-<button type="button" data-filter=".category-b">Category B</button>
-<button type="button" data-filter=".category-c">Category C</button>
 
-    <div class="container">
-    {% for balade in balades %}
-    <div class="mix Baule" data-order="1"><div class="card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
- <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
-  <div class="card-body">
-   <h3 class="card-title">{{ balade.nameBalade }}</h3>
-    <h4 class="card-title">Lieu : {{ balade.areaBalade }} </h4>
-    <p class="card-text">Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
-    <a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
-  </div>
-  
-</div>
-</div>
-    <div class="mix category-b" data-order="2">Category B</div>
-    <div class="mix category-b category-c" data-order="3">Category B et C</div>
-    <div class="mix category-a category-d" data-order="4">Category A et D</div>
-
-
-
-{% endfor %}
-</div>
-
-
-<script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-<script src="../js/mixitup.js"></script>
-<script>
-    var mixer = mixitup(".container");
-</script>
-
-    <div class="select_balade">
-    Localisation de votre balade
-   <select id="selectZone">
-  <option value="all">Toutes les zones</option>
-  <option value="La Baule">La Baule</option>
-  <option value="Pornichet">Pornichet</option>
-  <option value="Guérande">Guérande</option>
-  <option value="Saint-andré-des-eaux">Saint-andré-des-eaux</option>
-</select>
-
-</div>
-<div class="fiche_balade">
-{% for balade in balades %}
-
-<div class="card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
- <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
-  <div class="card-body">
-   <h3 class="card-title">{{ balade.nameBalade }}</h3>
-    <h4 class="card-title">Lieu : {{ balade.areaBalade }} </h4>
-    <p class="card-text">Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
-    <a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
-  </div>
-  
-</div>
-
-{% endfor %}
-</div>
-</div>
+	</div>
 
 {% endblock %}
