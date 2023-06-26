@@ -55,6 +55,7 @@ class BaladesType extends AbstractType
                     'La Baule' => 'La Baule',
                     'Pornichet' => 'Pornichet',
                     'Guérande' => 'Guérande',
+                    'Le Pouliguen' => 'Le Pouliguen',
                     'Saint-andré-des-eaux' => 'Saint-andré-des-eaux',
                 ],
             ]) 

@@ -20,17 +20,17 @@ var villes = {
 }
 
 };
-console.log({{ balade.latBalade }}, {{ balade.lngBalade }},"{{ balade.nameBalade }}"){% endfor %}
+console.log({{ balade.latBalade }}, {{ balade.lngBalade }},"{{ balade.nameBalade }}");{% endfor %}
 // Fonction d'initialisation de la carte
 
 
 // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-map = L.map('map').setView([
+var map = L.map('map').setView([
 47.2843726, -2.3951595
 ], 11);
 // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
 L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { // Il est toujours bien de laisser le lien vers la source des données
-attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 minZoom: 5,
 maxZoom: 15
 }).addTo(map);
@@ -40,6 +40,46 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 
 
 		</script>
+
+<button type="button" data-filter="all">All</button>
+<button type="button" data-filter=".Baule">La baule</button>
+<button type="button" data-filter=".category-b">Category B</button>
+<button type="button" data-filter=".category-c">Category C</button>
+
+    <div class="container">
+    {% for balade in balades %}
+    <div class="mix Baule" data-order="1"><div class="card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
+ <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
+  <div class="card-body">
+   <h3 class="card-title">{{ balade.nameBalade }}</h3>
+    <h4 class="card-title">Lieu : {{ balade.areaBalade }} </h4>
+    <p class="card-text">Durée : {{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
+    <a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
+  </div>
+  
+</div>
+</div>
+    <div class="mix category-b" data-order="2">Category B</div>
+    <div class="mix category-b category-c" data-order="3">Category B et C</div>
+    <div class="mix category-a category-d" data-order="4">Category A et D</div>
+
+
+
+{% endfor %}
+</div>
+
+
+<script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+<script src="../js/mixitup.js"></script>
+<script>
+    var mixer = mixitup(".container");
+</script>
+
     <div class="select_balade">
     Localisation de votre balade
    <select id="selectZone">
@@ -54,7 +94,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 <div class="fiche_balade">
 {% for balade in balades %}
 
-<div class="card card_balade " style="width: 18rem;">
+<div class="card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
  <img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}" >
   <div class="card-body">
    <h3 class="card-title">{{ balade.nameBalade }}</h3>
