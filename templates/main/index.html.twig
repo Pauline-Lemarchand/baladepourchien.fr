@@ -80,15 +80,7 @@
 
 		<h2 >Trouver une balade</h2>
 
-		<div class="btn-balade">
-
-		<div>	<a class="btn-choix" href="">Guérande</a></div>
-		<div>	<a class="btn-choix" href="">La Baule</a></div>
-		<div>	<a class="btn-choix" href="">Le Pouliguen</a></div>
-		<div>	<a class="btn-choix" href="">St andré</a></div>
-		<div>	<a class="btn-choix" href="">Autres</a></div>
-
-		</div>
+	
 
 		<div id="map"></div>
 
@@ -116,14 +108,20 @@ attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
 minZoom: 5,
 maxZoom: 15
 }).addTo(map);
+
+
 // Nous parcourons la liste des villes
 {% for balade in balades %}
-var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);{% endfor %}
 
+var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>{{balade.nameBalade}}</h3> <br>{% for activite in balade.activite %}<img src="{{ asset('uploads/emoji/' ~ activite.emoji) }}" width="20" height="20">{% endfor %},<a class="btn-choix" href="{{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
 
 		</script>
 
+<div class="btn-balade">
 
+		<a class="btn-choix" href="{{ path('balades') }}">Voir toutes les balades</a>
+		
+		</div>
 	</div>
 
 	{# 3eme BLOQUE =====================#}

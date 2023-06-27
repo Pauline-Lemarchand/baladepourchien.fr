@@ -74,6 +74,8 @@ class BaladesType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+         
+
 
             ->add('latBalade',  NumberType::class,[
                 'label' => 'latitude de zone de balade'

@@ -12,6 +12,7 @@
             <tr>
                 
                 <th>Nom</th>
+                <th>Emoji</th>
                 <th></th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
             <tr>
                
                 <td>{{ activite.nameActivite }}</td>
+                 <td><img src="{{ asset('uploads/emoji/' ~ activite.emoji) }}" width="50" height="50"></td>
                 <td>
                 
                     <a class="btn" href="{{ path('app_activites_edit', {'id': activite.id}) }}">Modifier</a>

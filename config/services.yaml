@@ -7,6 +7,7 @@ parameters:
     photo_directory: '%kernel.project_dir%/public/uploads/photoDog'
     photo_direction: '%kernel.project_dir%/public/uploads/photoBalade'
     photo_direction-conseil: '%kernel.project_dir%/public/uploads/photoConseil'
+    emoji_direction: '%kernel.project_dir%/public/uploads/emoji'
    
 
 services:

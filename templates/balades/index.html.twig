@@ -30,9 +30,12 @@
                 <td>{{ balade.timeBalade ? balade.timeBalade|date('H:i:') : '' }}h</td>
                 <td>{{ balade.areaBalade }}</td>
                  <td>
-                    {% for activite in activites %}
+                    {% for activite in balade.activite %}
             <ul>  <li class="activite_balade"> {{activite.nameActivite}}</li></ul>
               {% endfor %}</td>
+              {# <pre>
+                {{ dump(balade.activite) }}
+              </pre> #}
                  <td>{{ balade.user.firstnameUser }}</td>
                 
                 

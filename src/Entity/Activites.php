@@ -21,6 +21,9 @@ class Activites
     #[ORM\ManyToMany(targetEntity: Balades::class, mappedBy: 'activite')]
     private Collection $balade;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $emoji = null;
+
     public function __construct()
     {
         $this->balade = new ArrayCollection();
@@ -66,6 +69,18 @@ class Activites
         if ($this->balade->removeElement($balade)) {
             $balade->removeActivite($this);
         }
+
+        return $this;
+    }
+
+    public function getEmoji(): ?string
+    {
+        return $this->emoji;
+    }
+
+    public function setEmoji(?string $emoji): self
+    {
+        $this->emoji = $emoji;
 
         return $this;
     }
