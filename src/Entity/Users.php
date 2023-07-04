@@ -38,7 +38,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstnameUser = null;
 
     #[ORM\Column]
-    private ?float $phoneUser = null;
+    private ?string $phoneUser = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Dogs::class)]
     private Collection $dog;
@@ -151,12 +151,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoneUser(): ?float
+    public function getPhoneUser(): ?string
     {
         return $this->phoneUser;
     }
 
-    public function setPhoneUser(float $phoneUser): self
+    public function setPhoneUser(string $phoneUser): self
     {
         $this->phoneUser = $phoneUser;
 

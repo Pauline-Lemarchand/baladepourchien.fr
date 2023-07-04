@@ -20,11 +20,17 @@
 		<h1>Formulaire de contact</h1>
 
 	
-
+ <form action="?" method="POST">
  {{ form(form) }}
+
+      <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+      
+     
+    </form>
   En renseignant vos informations personnelles, vous acceptez d'être contacté(e) pour la gestion de votre compte/commande, de recevoir nos actualités et des offres promotionnelles, et vous acceptez les termes de notre <a href="{{ path('politiquedeconfidentialite') }}"> politique de confidentialité</a>.
 
 Vous pouvez retirer votre consentement à tout moment directement depuis la gestion de vos données personnelles ou en nous contactant à l’adresse contact@baladepourchien.fr
+		
 		</div>
 	{% endblock %}
 

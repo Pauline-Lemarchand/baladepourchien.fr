@@ -48,10 +48,6 @@ body {
   z-index: 30;
 }
 
-.test {
-  background-color: #2C7FA3;
-}
-
 .nav_scroll {
   text-decoration: none;
   display: flex;
@@ -206,6 +202,12 @@ body {
 
 .modal-content {
   background-color: #2D3047;
+}
+
+.legende_balade {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .find-balade {
@@ -518,7 +520,7 @@ footer .fa-instagram {
 .img_chien {
   width: 100px;
   height: 150px;
-  border-radius: 40px;
+  border-radius: 20px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-top: 10px;
@@ -733,7 +735,12 @@ footer .fa-instagram {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 70vh;
+  height: 70%;
+  margin: 5%;
+}
+
+.img_balade {
+  width: 50vw;
 }
 
 .block_balade_show {
@@ -743,12 +750,23 @@ footer .fa-instagram {
   justify-content: space-around;
   width: 100%;
 }
+.block_balade_show .img_chien {
+  width: 400px;
+  height: 500px;
+}
 
 .fiche_balade {
   display: flex;
   justify-content: space-around;
   margin-top: 5%;
   flex-wrap: wrap;
+}
+.fiche_balade .img_chien {
+  width: 200px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-top: 10px;
 }
 
 .select_balade {
@@ -759,7 +777,7 @@ footer .fa-instagram {
 }
 
 .show_balade {
-  margin-top: 5%;
+  margin: 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

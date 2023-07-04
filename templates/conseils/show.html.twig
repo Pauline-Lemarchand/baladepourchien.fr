@@ -1,25 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Balades{% endblock %}
+{% block title %}Balades
+{% endblock %}
 
 {% block body %}
-<div class="balade_show">
-    <h1>{{ conseil.titleConseil  }} </h1>
-<div class="block_balade_show">
-    <div class="show_balade">
+	<div class="balade_show">
+		<h1>{{ conseil.titleConseil  }}
+		</h1>
+		<div class="block_balade_show">
+			<div class="show_balade">
 
-  <p  class="card-title" >{{ conseil.textConseil }}</p>
-            
-              
-    <a class="btn-dm_show" href="{{ path('conseils') }}">Revenir à la liste</a>
+				<p class="card-title">{{ conseil.textConseil }}</p>
 
-   
-     <img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" >
-   
-    </div>
-   </div>
-  
-   </div>
 
+				<a class="btn-dm_show" href="{{ path('conseils') }}">Revenir à la liste</a>
 </div>
-{% endblock %}
+<div class="img_balade">
+				<img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}">
+
+			</div>
+		</div>
+
+	</div>
+
+</div>{% endblock %}

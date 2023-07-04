@@ -84,7 +84,7 @@ class BaladesController extends AbstractController
                  
                 }
     
-            return $this->redirectToRoute('app_balades_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('balades/new.html.twig', [

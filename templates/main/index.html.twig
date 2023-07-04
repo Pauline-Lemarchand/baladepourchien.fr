@@ -17,7 +17,7 @@
 			</div>
 			<nav class="navbar-centrale navbar-expand-lg bg-body-tertiary">
 				<div class="container-fluid">
-					
+
 					<div class="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul class="navbar-nav">
 
@@ -78,9 +78,8 @@
 
 	<div class="find-balade">
 
-		<h2 >Trouver une balade</h2>
+		<h2>Trouver une balade</h2>
 
-	
 
 		<div id="map"></div>
 
@@ -113,14 +112,25 @@ maxZoom: 15
 // Nous parcourons la liste des villes
 {% for balade in balades %}
 
-var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>{{balade.nameBalade}}</h3> <br>{% for activite in balade.activite %}<img src="{{ asset('uploads/emoji/' ~ activite.emoji) }}" width="20" height="20">{% endfor %},<a class="btn-choix" href="{{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
+var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>  {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">{% endfor %},<a class="btn-choix" href="  {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
+		</script>
+<div class="legende_balade">
+{% for balade in balades %}
+{% for activite in balade.activite %}
+<div>
+<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40"> {{activite.nameActivite}}
+</div>
+{% endfor %}
+{% endfor %}
 
 		</script>
+</div>
+		<div class="btn-balade">
 
-<div class="btn-balade">
 
-		<a class="btn-choix" href="{{ path('balades') }}">Voir toutes les balades</a>
-		
+			<a class="btn-choix" href="{{ path('balades') }}">Voir toutes les balades</a>
+
+
 		</div>
 	</div>
 
@@ -130,9 +140,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 		<h2>Rejoindre le groupe de balade</h2>
 
 		<div class="row row_groupe_accueil">
-			<div class="col-md-12 col_groupe_accueil">
-			
-			</div>
+			<div class="col-md-12 col_groupe_accueil"></div>
 		</div>
 
 
@@ -165,8 +173,8 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 	{# 5eme BLOQUE=================== #}
 	<div class="form-actu">
 		<h2>Participez à l'actualité de baladepourchien.fr</h2>
-		<p>Vous connaissez des balades près de chez vous ? Partagez les sur le site baladepourchien.fr afin de participer à faire grandir le choix de balade pour les propriétaires de chien de se site qui ne connaissent pas encore les balades près de chez eux. 
-		<br>Participez également à l'enregistrement des dangers afin d'éviter les risques avec nos amis les chiens. (chenilles, eaux contaminés)
+		<p>Vous connaissez des balades près de chez vous ? Partagez les sur le site baladepourchien.fr afin de participer à faire grandir le choix de balade pour les propriétaires de chien de se site qui ne connaissent pas encore les balades près de chez eux.
+			<br>Participez également à l'enregistrement des dangers afin d'éviter les risques avec nos amis les chiens. (chenilles, eaux contaminés)
 		</p>
 		<div class="btn-actu">
 			<a class="nv-balades" href="{{ path('app_balades_new') }}">Nouvelles balades</a>
