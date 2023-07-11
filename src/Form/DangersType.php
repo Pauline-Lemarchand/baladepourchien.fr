@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Balades;
+
 use App\Entity\Dangers;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,13 +23,7 @@ class DangersType extends AbstractType
                 ->add('nameDanger', TextType::class,[
                     'label' => 'Type de danger'
                     ] )
-                ->add('balade', EntityType::class, [
-                        'class' => Balades::class,
-                        'choice_label' => 'nameBalade',
-                        'label' => 'Balades',
-                        'multiple' => true,
-                        'expanded' => true,
-                    ])
+              
                     ->add('lat_danger',  NumberType::class,[
                         'label' => 'latitude de zone de balade'
                     ]) 

@@ -46,7 +46,7 @@ class Balades
     public function __construct()
     {
         $this->activite = new ArrayCollection();
-        $this->danger = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -138,29 +138,7 @@ class Balades
         return $this;
     }
 
-    /**
-     * @return Collection<int, Dangers>
-     */
-    public function getDanger(): Collection
-    {
-        return $this->danger;
-    }
-
-    public function addDanger(Dangers $danger): self
-    {
-        if (!$this->danger->contains($danger)) {
-            $this->danger->add($danger);
-        }
-
-        return $this;
-    }
-
-    public function removeDanger(Dangers $danger): self
-    {
-        $this->danger->removeElement($danger);
-
-        return $this;
-    }
+   
 
     public function getLatBalade(): ?string
     {

@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\DangersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Balades;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\DangersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DangersRepository::class)]
 class Dangers
@@ -21,8 +24,8 @@ class Dangers
     #[ORM\Column(length: 255)]
     private ?string $nameDanger = null;
 
-    #[ORM\ManyToMany(targetEntity: Balades::class, mappedBy: 'danger')]
-    private Collection $balade;
+    // #[ORM\ManyToMany(targetEntity: Balades::class, mappedBy: 'danger')]
+    // private Collection $balade;
 
     #[ORM\Column(length: 255)]
     private ?string $lat_danger = null;
@@ -30,9 +33,17 @@ class Dangers
     #[ORM\Column(length: 255)]
     private ?string $lng_danger = null;
 
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\NotNull()]
+    private ?\DateTimeImmutable $createAt = null;
+
+    // public function __construct()
+    // {
+    //     $this->balade = new ArrayCollection();
+    // }
     public function __construct()
     {
-        $this->balade = new ArrayCollection();
+        $this->createAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -64,33 +75,6 @@ class Dangers
         return $this;
     }
 
-    /**
-     * @return Collection<int, Balades>
-     */
-    public function getBalade(): Collection
-    {
-        return $this->balade;
-    }
-
-    public function addBalade(Balades $balade): self
-    {
-        if (!$this->balade->contains($balade)) {
-            $this->balade->add($balade);
-            $balade->addDanger($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBalade(Balades $balade): self
-    {
-        if ($this->balade->removeElement($balade)) {
-            $balade->removeDanger($this);
-        }
-
-        return $this;
-    }
-
     public function getLatDanger(): ?string
     {
         return $this->lat_danger;
@@ -114,4 +98,17 @@ class Dangers
 
         return $this;
     }
+
+    public function getCreateAt(): ?\DateTimeImmutable
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeImmutable $createAt): self
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
 }

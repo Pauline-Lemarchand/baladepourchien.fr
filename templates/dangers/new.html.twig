@@ -5,6 +5,7 @@
 {% block body %}
 <div class="block-edit">
     <h1>Ajouter un nouveau danger</h1>
+    
 
  {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
  <div class="block_edit_user">
@@ -20,13 +21,6 @@
 
 {{ form_label(form.lng_danger) }}
   {{ form_widget(form.lng_danger,{'attr': {'class': 'input'}}) }}
-
-
-{{ form_label(form.balade) }}
-  {{ form_widget(form.balade,{'attr': {'class': 'input'}}) }}
-
- 
-
 
 
   </div>
