@@ -34,8 +34,8 @@ class Balades
     #[ORM\ManyToMany(targetEntity: Activites::class, inversedBy: 'balade')]
     private Collection $activite;
 
-    #[ORM\ManyToMany(targetEntity: Dangers::class, inversedBy: 'balade')]
-    private Collection $danger;
+    // #[ORM\ManyToMany(targetEntity: Dangers::class, inversedBy: 'balade')]
+    // private Collection $danger;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $latBalade = null;

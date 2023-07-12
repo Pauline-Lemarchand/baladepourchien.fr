@@ -37,7 +37,7 @@ class DangersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $dangersRepository->save($danger, true);
 
-            return $this->redirectToRoute('app_dangers_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('dangers/new.html.twig', [
