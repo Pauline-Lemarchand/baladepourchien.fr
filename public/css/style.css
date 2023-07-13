@@ -385,6 +385,39 @@ body {
   text-align: center;
 }
 
+.niveau0_btn_autres {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  align-items: center;
+}
+.niveau0_btn_autres .niveau1_btn_autres {
+  padding-bottom: 5%;
+}
+.niveau0_btn_autres .niveau1_btn_autres h3 {
+  color: #96652A;
+  text-transform: uppercase;
+}
+.niveau0_btn_autres .niveau2_btn_autres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90vw;
+  font-weight: bold;
+}
+.niveau0_btn_autres .niveau2_btn_autres a {
+  color: #2C7FA3;
+  text-decoration: none;
+  background-color: #fff;
+}
+.niveau0_btn_autres .niveau2_btn_autres a:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #2C7FA3;
+}
+
 footer {
   background-color: #96652A;
   display: flex;

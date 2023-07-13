@@ -9,6 +9,7 @@ use App\Repository\DangersRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Twig\Extra\Intl\IntlExtension;
 
 #[ORM\Entity(repositoryClass: DangersRepository::class)]
 class Dangers

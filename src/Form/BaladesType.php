@@ -59,14 +59,7 @@ class BaladesType extends AbstractType
                     'Saint-andré-des-eaux' => 'Saint-andré-des-eaux',
                 ],
             ]) 
-            ->add('danger', EntityType::class, [
-                'class' => Dangers::class,
-                'choice_label' => 'nameDanger',
-                'label' => 'Dangers à signaler',
-                'multiple' => true,
-                'expanded' => true,
-            ])
-            
+           
             ->add('activite', EntityType::class, [
                 'class' =>  Activites::class,
                 'choice_label' => 'nameActivite',

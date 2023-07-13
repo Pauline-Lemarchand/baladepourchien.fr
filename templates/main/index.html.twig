@@ -112,74 +112,74 @@ maxZoom: 15
 // Nous parcourons la liste des villes
 {% for balade in balades %}
 
-var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>  {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">{% endfor %},<a class="btn-choix" href="  {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
+var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>   {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="   {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">{% endfor %},<a class="btn-choix" href="   {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
 		</script>
-<div class="legende_balade">
-{% for balade in balades %}
-{% for activite in balade.activite %}
-<div>
-<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40"> {{activite.nameActivite}}
-</div>
-{% endfor %}
-{% endfor %}
-
-		</script>
-</div>
-		<div class="btn-balade">
-
-
-			<a class="btn-choix" href="{{ path('balades') }}">Voir toutes les balades</a>
-
-
-		</div>
-	</div>
-
-	{# 3eme BLOQUE =====================#}
-
-	<div class="find-groupe">
-		<h2>Rejoindre le groupe de balade</h2>
-
-		<div class="row row_groupe_accueil">
-			<div class="col-md-12 col_groupe_accueil"></div>
-		</div>
-
-
-		<a href="#" class="btn-tousgroupes">Voir le groupe sur facebook</a>
-
-	</div>
-
-	{# 4eme bloque =======================#}
-	<h2 class="h2-conseils">Nos conseils</h2>
-	<div class="conseils">
-		{% for conseil in conseils|slice(0, 3) %}
-			<div class="card_conseil">
-				<div class="row row_groupe_accueil">
-					<div class="col-md-12 col_groupe_accueil">
-
-						<div class="card-body">
-							<h5 class="card-title">{{ conseil.titleConseil }}</h5>
-							<img src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" width="100">
-							<p class="card-text">{{ conseil.textConseil }}</p>
-							<a href="#" class="btn-tousgroupes">Voir plus</a>
-						</div>
-
+		<div class="legende_balade">
+			{% for balade in balades %}
+				{% for activite in balade.activite %}
+					<div>
+						<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">
+						{{activite.nameActivite}}
 					</div>
-				</div>
+				{% endfor %}
+			{% endfor %}
 
-			</div>
-		{% endfor %}
+		</script>
+	</div>
+	<div class="btn-balade">
+
+
+		<a class="btn-choix" href="{{ path('balades') }}">Voir toutes les balades</a>
+
+
+	</div>
+</div>
+
+{# 3eme BLOQUE =====================#}
+
+<div class="find-groupe">
+	<h2>Rejoindre le groupe de balade</h2>
+
+	<div class="row row_groupe_accueil">
+		<div class="col-md-12 col_groupe_accueil"></div>
 	</div>
 
-	{# 5eme BLOQUE=================== #}
-	<div class="form-actu">
-		<h2>Participez à l'actualité de baladepourchien.fr</h2>
-		<p>Vous connaissez des balades près de chez vous ? Partagez les sur le site baladepourchien.fr afin de participer à faire grandir le choix de balade pour les propriétaires de chien de se site qui ne connaissent pas encore les balades près de chez eux.
-			<br>Participez également à l'enregistrement des dangers afin d'éviter les risques avec nos amis les chiens. (chenilles, eaux contaminés)
-		</p>
-		<div class="btn-actu">
-			<a class="nv-balades" href="{{ path('app_balades_new') }}">Nouvelles balades</a>
-			<a class="nv-dangers" href="{{ path('app_dangers_new') }}">Nouveaux dangers</a>
+
+	<a href="#" class="btn-tousgroupes">Voir le groupe sur facebook</a>
+
+</div>
+
+{# 4eme bloque =======================#}
+<h2 class="h2-conseils">Nos conseils</h2>
+<div class="conseils">
+	{% for conseil in conseils|slice(0, 3) %}
+		<div class="card_conseil">
+			<div class="row row_groupe_accueil">
+				<div class="col-md-12 col_groupe_accueil">
+
+					<div class="card-body">
+						<h5 class="card-title">{{ conseil.titleConseil }}</h5>
+						<img src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" width="100">
+						<p class="card-text">{{ conseil.textConseil }}</p>
+						<a href="#" class="btn-tousgroupes">Voir plus</a>
+					</div>
+
+				</div>
+			</div>
 
 		</div>
+	{% endfor %}
+</div>
+
+{# 5eme BLOQUE=================== #}
+<div class="form-actu">
+	<h2>Participez à l'actualité de baladepourchien.fr</h2>
+	<p>Vous connaissez des balades près de chez vous ? Partagez les sur le site baladepourchien.fr afin de participer à faire grandir le choix de balade pour les propriétaires de chien de se site qui ne connaissent pas encore les balades près de chez eux.
+		<br>Participez également à l'enregistrement des dangers afin d'éviter les risques avec nos amis les chiens. (chenilles, eaux contaminés)
+	</p>
+	<div class="btn-actu">
+		<a class="nv-balades" href="{{ path('app_balades_new') }}">Nouvelles balades</a>
+		<a class="nv-dangers" href="{{ path('app_dangers_new') }}">Nouveaux dangers</a>
+
 	</div>
-{% endblock %}
+</div>{% endblock %}

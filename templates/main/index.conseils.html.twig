@@ -1,23 +1,39 @@
 {% extends 'base.html.twig' %}
-{% block title %}Conseils cannin{% endblock %}
+{% block title %}Conseils cannin
+{% endblock %}
 
 {% block body %}
-<h1 class="title-balade" >Nos meilleurs conseils, pour que votre chien soit bien dans ses coussinets ! </h1>
-<div class="fiche_balade">
+	<h1 class="title-balade">Nos meilleurs conseils, pour que votre chien soit bien dans ses coussinets !
+	</h1>
+	<div class="fiche_balade">
 
-{% for conseil in conseils %}
+		{% for conseil in conseils %}
 
-<div class="card card_balade " style="width: 18rem;">
- <img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" >
-  <div class="card-body">
-   <h3 class="card-title">{{ conseil.titleConseil }}</h3>
-    
-   <p  class="card-title" >{{ conseil.textConseil }}</p>
-    <a href="{{ path('app_conseils_show', {'id': conseil.id}) }}" class="btn ">Voir plus</a>
-  </div>
-  
-</div>
+			<div class="card card_balade " style="width: 18rem;">
+				<img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}">
+				<div class="card-body">
+					<h3 class="card-title">{{ conseil.titleConseil }}</h3>
 
-{% endfor %}
-</div>
+					<p class="card-title">{{ conseil.textConseil }}</p>
+					<a href="{{ path('app_conseils_show', {'id': conseil.id}) }}" class="btn ">Voir plus</a>
+				</div>
+
+			</div>
+
+		{% endfor %}
+	</div>
+
+	<div class="niveau0_btn_autres">
+		<div class="niveau1_btn_autres">
+			<h3>Vous pourriez être interressé par :</h3>
+		</div>
+		<div class="niveau2_btn_autres">
+			<a href="{{ path('home') }}">Page d'accueil</a>
+			<a href="{{ path('balades') }}">Nos balades</a>
+			<a href="{{ path('dangers') }}">Les dangers signalés</a>
+			<a href="{{ path('dangers') }}">Entrer dans le groupes</a>
+			<a href="{{ path('contact') }}">Nous contacter</a>
+		</div>
+
+	</div>
 {% endblock %}

@@ -463,6 +463,51 @@ h3{
 }
 
 
+// BOUTONS DE REDIRECTION =================================
+
+.niveau0_btn_autres{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+margin-top: 10%;
+margin-bottom: 10%;
+
+align-items: center;
+    .niveau1_btn_autres{
+        h3{
+            color: #96652A;
+            text-transform: uppercase;
+        }
+        padding-bottom: 5%;
+
+        }
+        .niveau2_btn_autres{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 90vw;
+            font-weight: bold;
+            a {
+                color:#2C7FA3;
+                text-decoration: none;
+                background-color:#fff;
+
+               
+    
+    
+            }
+    
+            a:hover {
+                color:#fff;
+                text-decoration: none;
+                background-color:#2C7FA3;
+                
+            }
+    }
+}
+
+
+
 
 // FOOTER====================
 
