@@ -1,11 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Dogs{% endblock %}
+{% block title %}Nouveau chien{% endblock %}
 
 {% block body %}
-    <h1>Create new Dogs</h1>
+   
 
-    {{ include('dogs/_form.html.twig') }}
+<div class="block-edit">
+ 
+     <h1>Créer un nouveau chien</h1>
 
-    <a href="{{ path('app_dogs_index') }}">back to list</a>
+ {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+ <div class="block_edit_user">
+
+  
+ {{ form_label(form.nameDog) }}
+  {{ form_widget(form.nameDog,{'attr': {'class': 'input'}}) }}
+
+ {{ form_label(form.raceDog) }}
+  {{ form_widget(form.raceDog,{'attr': {'class': 'input'}}) }}
+  {{ form_label(form.descriptionDog) }}
+  {{ form_widget(form.descriptionDog,{'attr': {'class': 'input'}}) }}
+
+{{ form_label(form.ageDog) }}
+  {{ form_widget(form.ageDog,{'attr': {'class': 'input'}}) }}
+{{ form_label(form.photoDog) }}
+  {{ form_widget(form.photoDog,{'attr': {'class': 'input'}}) }}
+
+
+  </div>
+ 
+ <button class="btn">{{ button_label|default('Créer') }}</button>
+ {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+ 
+</div>
 {% endblock %}

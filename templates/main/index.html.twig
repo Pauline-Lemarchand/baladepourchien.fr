@@ -161,7 +161,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 						<h5 class="card-title">{{ conseil.titleConseil }}</h5>
 						<img src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" width="100">
 						<p class="card-text">{{ conseil.textConseil }}</p>
-						<a href="#" class="btn-tousgroupes">Voir plus</a>
+						<a href="{{ path('app_conseils_show', {'id': conseil.id}) }}" class="btn-tousgroupes">Voir plus</a>
 					</div>
 
 				</div>
