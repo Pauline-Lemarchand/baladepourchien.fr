@@ -10,11 +10,9 @@
 			<i class="fa-solid fa-skull-crossbones"></i>
 		</h1>
 
-	
 
-			<div id="map"></div>
+		<div id="map"></div>
 
-	
 
 		<script type="text/javascript">
 			{% for dangers in dangers %}
@@ -25,12 +23,12 @@ var villes = {
 }
 
 };
-console.log({{ dangers.latdanger }}, {{ dangers.lngdanger }},"{{ dangers.nameDanger }}"){% endfor %}
+console.log({{ dangers.latdanger }}, {{ dangers.lngdanger }},"{{ dangers.nameDanger }}");{% endfor %}
 // Fonction d'initialisation de la carte
 
 
 // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-map = L.map('map').setView([
+var map = L.map('map').setView([
 47.2843726, -2.3951595
 ], 11);
 // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
@@ -43,22 +41,18 @@ maxZoom: 15
 {% for dangers in dangers %}
 var myIcon = L.icon({
 iconUrl: "{{ asset('images/dangers.png') }}",
-
 iconSize: [20, 20]
-
-
-});
-{% endfor %}
+});{% endfor %}
 {% for dangers in dangers %}
 var marker = L.marker([
 {{ dangers.latdanger }}, {{ dangers.lngdanger }}
-],{icon: myIcon}).addTo(map).bindPopup('{{dangers.nameDanger}} <br> Ajouté le : {{dangers.createAt|format_datetime('short', 'none', locale='fr')}} ');
-{% endfor %}
+], {icon: myIcon}).addTo(map).bindPopup('{{ dangers.nameDanger }}<br> Ajouté le :  {{ dangers.createAt|format_datetime('short', 'none', locale='fr') }}');{% endfor %}
+		
 		</script>
+</div>
 
-
-	</div>
-  <div class="niveau0_btn_autres">
+	
+	<div class="niveau0_btn_autres">
 		<div class="niveau1_btn_autres">
 			<h3>Vous pourriez être interressé par :</h3>
 		</div>
