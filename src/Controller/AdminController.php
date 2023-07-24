@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\EditUserType;
+use App\Repository\DogsRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +18,14 @@ class AdminController extends AbstractController
    
 
     #[Route('/dashboard', name: "dashboard")]
-    public function index()
+    public function index(DogsRepository $dogRepository,)
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'dogs' => $dogRepository->findAll()
         ]);
     }
     

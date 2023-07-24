@@ -48,7 +48,8 @@ iconSize: [20, 20]
 
 
 });
-
+{% endfor %}
+{% for dangers in dangers %}
 var marker = L.marker([
 {{ dangers.latdanger }}, {{ dangers.lngdanger }}
 ],{icon: myIcon}).addTo(map).bindPopup('{{dangers.nameDanger}} <br> Ajouté le : {{dangers.createAt|format_datetime('short', 'none', locale='fr')}} ');
