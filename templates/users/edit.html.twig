@@ -1,43 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modification compte{% endblock %}
-
 {% block body %}
 
-<div class="block-edit">
-    <h1 class="title-edit">Modifier mon compte</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+              
+                    <h1 class="text-center">Modifier mon compte</h1>
+               
+                <div class="card-body">
+                    {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.email, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
- <div class="block_edit_user">
+                    <div class="form-group">
+                        {{ form_label(form.nameUser, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.nameUser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-  
- {{ form_label(form.email) }}
-  {{ form_widget(form.email,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.firstnameUser, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.firstnameUser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_label(form.nameUser) }}
-  {{ form_widget(form.nameUser,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.phoneUser, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.phoneUser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_label(form.firstnameUser) }}
-  {{ form_widget(form.firstnameUser,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        <label class="font-weight-bold">Entrer votre mot de passe</label>
+                        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-{{ form_label(form.phoneUser) }}
-  {{ form_widget(form.phoneUser,{'attr': {'class': 'input'}}) }}
+                    <div class="text-center">
+                        {{ include('users/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                        {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+                    </div>
+                       <div class="card-body">
+                    {{ include('users/_delete_form.html.twig', {'button_label': 'Supprimer mon compte'}) }}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-Entrer votre mot de passe
-  {{ form_widget(form.password, {'attr': {'class': 'input'}}) }}
-
-
-
-
-
-  </div>
-  {{ include('users/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
- {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
-  
 </div>
 
-  
-
-
-    {# {{ include('users/_delete_form.html.twig') }} #}
 {% endblock %}

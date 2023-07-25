@@ -4,31 +4,54 @@
 {% block title %}Modifier {{ dog.nameDog }}{% endblock %}
 
 {% block body %}
-<div class="block-edit_dog">
-    <h1 class="title-edit">Modifier les informations de {{ dog.nameDog }}</h1>
-<img src="{{ asset('uploads/photoDog/' ~ dog.photoDog ) }}" class="edit-dog">
-{{ form_start(form, {'attr': {'class': 'formulaire_2'}}) }}
-  
- <div class="block_edit_user">
- {{ form_label(form.nameDog) }}
-  {{ form_widget(form.nameDog,{'attr': {'class': 'input'}}) }}
 
- {{ form_label(form.raceDog) }}
-  {{ form_widget(form.raceDog,{'attr': {'class': 'input'}}) }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+               
+                    <h1 class="text-center">Modifier les informations de {{ dog.nameDog }}</h1>
+            
+                <div class="card-body">
+                    <img src="{{ asset('uploads/photoDog/' ~ dog.photoDog ) }}" class="edit-dog img-fluid rounded-circle mx-auto d-block mb-3" alt="Photo du chien" style="max-width: 100px;">
+                    {{ form_start(form, {'attr': {'class': 'formulaire_2'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.nameDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.nameDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_label(form.descriptionDog) }}
-  {{ form_widget(form.descriptionDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.raceDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.raceDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-{{ form_label(form.ageDog) }}
-  {{ form_widget(form.ageDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.descriptionDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.descriptionDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-{{ form_label(form.photoDog) }}
-  {{ form_widget(form.photoDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.ageDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.ageDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
+                    <div class="form-group">
+                        {{ form_label(form.photoDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.photoDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="text-center">
+                    
 {{ include('dogs/_form.html.twig', {'button_label': 'Sauvegarder les modifications'}) }}
  {{ include('dogs/_delete_form.html.twig', {'button_label': 'Supprimer ce chien'}) }}
 
-</div>
-   {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+
+                    </div>
+                    {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
+

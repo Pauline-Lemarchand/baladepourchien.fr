@@ -42,13 +42,15 @@ class BaladesType extends AbstractType
                 ],
                 ])
            
-            ->add('timeBalade', TimeType::class, [
-                'input'  => 'timestamp',
-                'widget' => 'choice',
-                'label' => 'Durée de la promenade',
-                'minutes' => range(0, 59, 30)
-               
-            ])
+                ->add('timeBalade', TimeType::class, [
+                    'input' => 'timestamp',
+                'widget' => 'choice',// Utilisation de 'string' pour éviter les problèmes avec les heures
+                    'widget' => 'single_text',
+                    'label' => 'Durée de la promenade',
+                    'attr' => [
+                        'list' => 'minutes-list', // ID de la liste déroulante personnalisée
+                    ],
+                ])
             ->add('areaBalade',  ChoiceType::class,[
                 'label' => 'Zone de votre balade',
                 'choices' => [

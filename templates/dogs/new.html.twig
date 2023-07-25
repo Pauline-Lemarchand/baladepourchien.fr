@@ -5,32 +5,48 @@
 {% block body %}
    
 
-<div class="block-edit">
- 
-     <h1>Créer un nouveau chien</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h1 class="text-center">Créer un nouveau chien</h1>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.nameDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.nameDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
- <div class="block_edit_user">
+                    <div class="form-group">
+                        {{ form_label(form.raceDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.raceDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-  
- {{ form_label(form.nameDog) }}
-  {{ form_widget(form.nameDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.descriptionDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.descriptionDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
- {{ form_label(form.raceDog) }}
-  {{ form_widget(form.raceDog,{'attr': {'class': 'input'}}) }}
-  {{ form_label(form.descriptionDog) }}
-  {{ form_widget(form.descriptionDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.ageDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.ageDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-{{ form_label(form.ageDog) }}
-  {{ form_widget(form.ageDog,{'attr': {'class': 'input'}}) }}
-{{ form_label(form.photoDog) }}
-  {{ form_widget(form.photoDog,{'attr': {'class': 'input'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.photoDog, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+                        {{ form_widget(form.photoDog, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-
-  </div>
- 
- <button class="btn">{{ button_label|default('Créer') }}</button>
- {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
- 
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">{{ button_label|default('Créer') }}</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

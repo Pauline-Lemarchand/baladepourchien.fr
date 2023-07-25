@@ -5,39 +5,43 @@
 {% block body %}
 <div class="block-edit">
     <h1>Ajouter un nouveau danger</h1>
-    
 
- {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
- <div class="block_edit_user">
+    {{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+    <div class="block_edit_user">
 
-  
- {{ form_label(form.areaDanger) }}
-  {{ form_widget(form.areaDanger,{'attr': {'class': 'input'}}) }}
+        <div class="form-group">
+            {{ form_label(form.areaDanger) }}
+            {{ form_widget(form.areaDanger,{'attr': {'class': 'form-control'}}) }}
+        </div>
 
- {{ form_label(form.nameDanger) }}
-  {{ form_widget(form.nameDanger,{'attr': {'class': 'input'}}) }}
-  {{ form_label(form.lat_danger) }}
-  {{ form_widget(form.lat_danger,{'attr': {'class': 'input'}}) }}
+        <div class="form-group">
+            {{ form_label(form.nameDanger) }}
+            {{ form_widget(form.nameDanger,{'attr': {'class': 'form-control'}}) }}
+        </div>
 
-{{ form_label(form.lng_danger) }}
-  {{ form_widget(form.lng_danger,{'attr': {'class': 'input'}}) }}
+        <div class="form-group">
+            {{ form_label(form.lat_danger) }}
+            {{ form_widget(form.lat_danger,{'attr': {'class': 'form-control'}}) }}
+        </div>
 
+        <div class="form-group">
+            {{ form_label(form.lng_danger) }}
+            {{ form_widget(form.lng_danger,{'attr': {'class': 'form-control'}}) }}
+        </div>
 
-  </div>
- 
- <button class="btn">{{ button_label|default('Créer') }}</button>
- {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
- 
-</div>
-    
     </div>
 
-    <div class="niveau0_btn_autres">
+    <button class="btn btn-primary">{{ button_label|default('Créer') }}</button>
+    {{ form_end(form) }}
+
+</div>
+    
+<div class="niveau0_btn_autres">
 		<div class="niveau1_btn_autres">
 			<h3>Vous pourriez être interressé par :</h3>
 		</div>
 		<div class="niveau2_btn_autres">
-		<a href="{{ path('app_balades_new') }}">Ajouter une balade</a>
+		<a href="{{ path('app_dangers_new') }}">Ajouter un danger</a>
 			<a href="{{ path('home') }}">Page d'accueil</a>
 			<a href="{{ path('conseils') }}">Nos conseils</a>
 			<a href="{{ path('dangers') }}">Les dangers signalés</a>
@@ -46,5 +50,4 @@
 		</div>
 
 	</div>
-    
 {% endblock %}
