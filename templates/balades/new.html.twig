@@ -5,28 +5,32 @@
 {% block body %}
    
 
-    
+    {# {{ form_start(form, {'attr': {'class': 'formulaire'}}) }} #}
 
 <div class="block-edit">
     <h1 class="title-edit">Ajouter une balade</h1>
-	{{ form_start(form, {'attr': {'class': 'formulaire'}}) }}
+	{{ form_start(form) }}
  <div class="block_edit_user">
 
 <form>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Nom de la Baldade</label>
-    {# {{ form_label(form.nameBalade) }} #}
-  {{ form_widget(form.nameBalade,{'attr': {'class': 'input'}}) }}
+   
+  {{ form_widget(form.nameBalade, {'attr': {'class': "form-control"}}) }}
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      <label for="inputPassword4">Photo de la balade</label>
+  
+	  {{ form_widget(form.photoBalade,{'attr': {'id':"customFile"}}) }}
+	
+	 
     </div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  
+   <label for="inputEmail4">Durée de la balade</label>
+   {{ form_widget(form.timeBalade,{'attr': {'type': "time"}}) }}
   </div>
   <div class="form-group">
     <label for="inputAddress2">Address 2</label>
@@ -57,15 +61,15 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+ <button class="btn">{{ button_label|default('Save') }}</button>
+
 </form>
  
   
- {{ form_label(form.photoBalade) }}
-  {{ form_widget(form.photoBalade,{'attr': {'class': 'input'}}) }}
+  
 
- {{ form_label(form.timeBalade) }}
-  {{ form_widget(form.timeBalade,{'attr': {'class': 'input'}}) }}
+
+ 
 
 {{ form_label(form.areaBalade) }}
   {{ form_widget(form.areaBalade,{'attr': {'class': 'input'}}) }}
@@ -81,9 +85,8 @@
   {{ form_widget(form.activite,{'attr': {'class': 'input'}}) }}
 
   </div>
-   <button class="btn">{{ button_label|default('Save') }}</button>
- {{ form_end(form, {'attr': {'class': 'formulaire'}}) }}
-  
+   
+   {{ form_end(form) }}
 </div>
 <div class="niveau0_btn_autres">
 		<div class="niveau1_btn_autres">
