@@ -15,6 +15,7 @@ body {
     // position: fixed;
     width: 100%;
     z-index: 5;
+    margin-bottom: 50px;
 
     .fa-square-facebook {
         font-size: 25px;
@@ -86,6 +87,7 @@ body {
     height: 50px;
     width: 35px;
     margin: 10px;
+
 }
 
 
@@ -138,8 +140,9 @@ body {
     .logo-css {
         width: 80px;
         height: 120px;
-        margin: 50px;
+        margin-top: -50px;
         padding-top: 20px;
+        margin-left: 50px;
     }
 
     .navbar-nav {
@@ -341,7 +344,10 @@ h3{
 }
 
 // 3eme BLOQUE ACCUEIL====================
-
+.custom-img {
+    max-width: 50%;
+    height: auto;
+}
 .h2-conseils {
     text-align: center;
     margin: 50px;
@@ -502,7 +508,10 @@ align-items: center;
                 color:#fff;
                 text-decoration: none;
                 background-color:#2C7FA3;
-                
+                height: 30px;
+                width: 200px;
+                text-align: center;
+                border-radius: 10%;
             }
     }
 }

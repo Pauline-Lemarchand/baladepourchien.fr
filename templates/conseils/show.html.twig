@@ -4,23 +4,19 @@
 {% endblock %}
 
 {% block body %}
-	<div class="balade_show">
-		<h1>{{ conseil.titleConseil  }}
-		</h1>
-		<div class="block_balade_show">
-			<div class="show_balade">
-
-				<p class="card-title">{{ conseil.textConseil }}</p>
-
-
-				<a class="btn-dm_show" href="{{ path('conseils') }}">Revenir à la liste</a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                  <img class="card-img-top img-fluid custom-img" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" alt="Photo du conseil">
+                <div class="card-body">
+                    <h1 class="card-title">{{ conseil.titleConseil }}</h1>
+                    <p class="card-text">{{ conseil.textConseil }}</p>
+                    <a href="{{ path('conseils') }}" class="btn ">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="img_balade">
-				<img class="img_chien" src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}">
+{% endblock %}
 
-			</div>
-		</div>
-
-	</div>
-
-</div>{% endblock %}

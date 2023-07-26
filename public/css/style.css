@@ -10,6 +10,7 @@ body {
   padding: 10px;
   width: 100%;
   z-index: 5;
+  margin-bottom: 50px;
 }
 .navigation .fa-square-facebook {
   font-size: 25px;
@@ -109,8 +110,9 @@ body {
 .haut-page .logo-css {
   width: 80px;
   height: 120px;
-  margin: 50px;
+  margin-top: -50px;
   padding-top: 20px;
+  margin-left: 50px;
 }
 .haut-page .navbar-nav {
   display: flex;
@@ -287,6 +289,11 @@ body {
   font-weight: bold;
 }
 
+.custom-img {
+  max-width: 50%;
+  height: auto;
+}
+
 .h2-conseils {
   text-align: center;
   margin: 50px;
@@ -416,6 +423,10 @@ body {
   color: #fff;
   text-decoration: none;
   background-color: #2C7FA3;
+  height: 30px;
+  width: 200px;
+  text-align: center;
+  border-radius: 10%;
 }
 
 footer {

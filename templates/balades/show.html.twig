@@ -18,13 +18,15 @@
 					{{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}h
 				</p>
 
-				{% for activite in balade.activite %}
+				
 
 
 					<p>Activités disponible :
-						{{activite.nameActivite}}
+					{% for activite in balade.activite %}
+					<li>	{{activite.nameActivite}}</li>
+						{% endfor %}
 					</p>
-				{% endfor %}
+				
 
 				<a class="btn-dm_show" href="{{ path('balades') }}">Revenir à la liste</a>
 
@@ -70,8 +72,32 @@ minZoom: 5,
 maxZoom: 15
 }).addTo(map);
 // Nous parcourons la liste des villes
+var lat = {{ balade.latBalade }};
+var lng = {{ balade.lngBalade }};
 
-var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map);
+// Créer le marqueur
+var marker = L.marker([lat, lng]).addTo(map);
+
+// Contenu du popup avec les liens vers Waze et Google Maps
+var popupContent = `
+<h2>Coordonnées gps</h2>
+    <h3>{{ balade.latBalade }}</h3>
+    <h3>{{ balade.lngBalade }}</h3>
+    <button class="btn-choix" id="wazeLink">J'y vais avec Waze</button>
+    <button class="btn-choix" id="googleMapsLink">J'y vais avec Google Maps</button>
+`;
+
+// Ajouter le popup au marqueur
+marker.bindPopup(popupContent);
+
+marker.on("popupopen", function() {
+  
+    // Ajouter un événement de clic au lien Google Maps
+    document.getElementById("googleMapsLink").addEventListener("click", function() {
+        var googleMapsUrl = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lng;
+        window.open(googleMapsUrl, "_blank");
+    });
+});
 	</script>
 
 
