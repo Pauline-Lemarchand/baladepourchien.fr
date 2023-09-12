@@ -12,6 +12,7 @@
 			<video id="background-video" autoplay loop muted poster="{{ asset('images/video-accueil.mp4') }}">
 				<source src="{{ asset('images/video-accueil.mp4') }}" type="video/mp4">
 			</video>
+	
 			<div class="logo-header">
 				<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
 			</div>
@@ -86,13 +87,7 @@
 
 		<script type="text/javascript">
 			{% for balade in balades %}
-var villes = {
-"{{ balade.nameBalade }}": {
-"lat": {{ balade.latBalade }},
-"lon": {{ balade.lngBalade }}
-}
 
-};
 console.log({{ balade.latBalade }}, {{ balade.lngBalade }},"{{ balade.nameBalade }}");{% endfor %}
 // Fonction d'initialisation de la carte
 

@@ -46,14 +46,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Balades::class)]
     private Collection $balade;
 
-    #[ORM\ManyToMany(targetEntity: Groupes::class, inversedBy: 'user')]
-    private Collection $groupe;
 
     public function __construct()
     {
         $this->dog = new ArrayCollection();
         $this->balade = new ArrayCollection();
-        $this->groupe = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -183,11 +181,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeDog(Dogs $dog): self
     {
-        if ($this->dog->removeElement($dog)) {
+        if ($this->dog->removeElement($dog) && $dog->getUser() === $this) {
             // set the owning side to null (unless already changed)
-            if ($dog->getUser() === $this) {
+          
                 $dog->setUser(null);
-            }
+            
         }
 
         return $this;
@@ -223,27 +221,4 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Groupes>
-     */
-    public function getGroupe(): Collection
-    {
-        return $this->groupe;
-    }
-
-    public function addGroupe(Groupes $groupe): self
-    {
-        if (!$this->groupe->contains($groupe)) {
-            $this->groupe->add($groupe);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupe(Groupes $groupe): self
-    {
-        $this->groupe->removeElement($groupe);
-
-        return $this;
-    }
 }

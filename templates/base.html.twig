@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<title>
@@ -62,7 +62,29 @@
 		<script src="https://kit.fontawesome.com/3507128011.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=CLE DU SITE"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suranna&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JG1VF4HPV2"></script>
+<script>
+function onClick(e) {
+e.preventDefault();
+grecaptcha.ready(function() {
+grecaptcha.execute('6Lc_ZxUoAAAAAIMhevZmZLbiD8ypuQKoxk6mGTHX', {action: 'submit'}).then(function(token) {
+console.log('captacha');
+});
+});
+}
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JG1VF4HPV2');
+</script>
 	</head>
 
 	<body>
@@ -72,7 +94,7 @@
 				<i class="fa-brands fa-instagram"></i>
 				<a class="accueil-nav" href="{{ path('home') }}">Accueil</a>
 			</div>
-<nav class="navbar navbar-expand-lg navbar-responsive ">
+<nav aria-label="baladepourchien menu" class="navbar navbar-expand-lg navbar-responsive ">
   <div class="container-fluid">
   
     <button class="navbar-toggler resp" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,7 +162,7 @@
 					<img src="{{ asset('images/LOGO.png') }}" alt="logo" class="logo-css">
 				</div>
 				<div class="footer-nav">
-					<nav class="nav-footer">
+					<nav aria-label="footer menu" class="nav-footer">
 						<a href="{{ path('home') }}">Accueil</a>
 						<a href="{{ path('balades') }}">Trouver une balade</a>
 						<a href="https://www.facebook.com/">Rejoindre notre goupe de balade</a>

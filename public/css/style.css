@@ -2,6 +2,10 @@ body {
   color: #333333;
 }
 
+h1 {
+  font-family: "Suranna", serif;
+}
+
 .navigation {
   background-color: #96652A;
   display: flex;

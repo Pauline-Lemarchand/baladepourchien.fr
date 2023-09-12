@@ -16,13 +16,7 @@
 
 		<script type="text/javascript">
 			{% for dangers in dangers %}
-var villes = {
-"{{ dangers.nameDanger }}": {
-"lat": {{ dangers.latdanger }},
-"lon": {{ dangers.lngdanger }}
-}
 
-};
 console.log({{ dangers.latdanger }}, {{ dangers.lngdanger }},"{{ dangers.nameDanger }}");{% endfor %}
 // Fonction d'initialisation de la carte
 
