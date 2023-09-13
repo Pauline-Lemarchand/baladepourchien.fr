@@ -23,10 +23,20 @@
  <form action="?" method="POST">
  {{ form(form) }}
 
-      <div class="g-recaptcha" data-sitekey="6Lc_ZxUoAAAAAIMhevZmZLbiD8ypuQKoxk6mGTHX"></div>
+
+  
       
-     
     </form>
+        <script>
+function onClick(e) {
+e.preventDefault();
+grecaptcha.ready(function() {
+grecaptcha.execute('6Lc_ZxUoAAAAAIMhevZmZLbiD8ypuQKoxk6mGTHX', {action: 'submit'}).then(function(token) {
+console.log('captacha');
+});
+});
+}
+</script>
   En renseignant vos informations personnelles, vous acceptez d'être contacté(e) pour la gestion de votre compte/commande, de recevoir nos actualités et des offres promotionnelles, et vous acceptez les termes de notre <a href="{{ path('politiquedeconfidentialite') }}"> politique de confidentialité</a>.
 
 Vous pouvez retirer votre consentement à tout moment directement depuis la gestion de vos données personnelles ou en nous contactant à l’adresse contact@baladepourchien.fr
