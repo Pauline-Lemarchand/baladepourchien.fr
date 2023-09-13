@@ -110,14 +110,14 @@ maxZoom: 15
 var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>   {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="   {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">{% endfor %},<a class="btn-choix" href="   {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
 		</script>
 		<div class="legende_balade">
-			{% for balade in balades %}
-				{% for activite in balade.activite %}
+			
+				{% for activite in activites %}
 					<div>
 						<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">
 						{{activite.nameActivite}}
 					</div>
 				{% endfor %}
-			{% endfor %}
+			
 
 	
 	</div>

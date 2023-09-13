@@ -11,6 +11,7 @@ use App\Repository\DangersRepository;
 use App\Repository\GroupesRepository;
 use App\Repository\ConseilsRepository;
 use App\Repository\ContactsRepository;
+use App\Repository\ActivitesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -24,12 +25,13 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\mailer;
 class MainController extends AbstractController
 {
     #[Route(' ', name: 'home')]
-    public function index(BaladesRepository $baladesRepository, GroupesRepository $groupesRepository, ConseilsRepository $conseilsRepository): Response
+    public function index(BaladesRepository $baladesRepository, GroupesRepository $groupesRepository, ConseilsRepository $conseilsRepository,ActivitesRepository $activitesRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'balades' => $baladesRepository->findAll(),
             'groupes' => $groupesRepository->findAll(),
             'conseils' => $conseilsRepository->findAll(),
+            'activites' => $activitesRepository->findAll(),
         ]);
     }
     #[Route('/nosconseils', name: 'conseils')]
