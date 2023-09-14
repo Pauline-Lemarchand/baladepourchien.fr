@@ -324,7 +324,6 @@ h1 {
 }
 .conseils .card-body {
   min-height: 400px;
-  max-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -981,6 +980,21 @@ footer .fa-instagram {
 @media (max-width: 1168px) {
   .find-balade {
     margin-top: 9%;
+  }
+}
+@media (max-width: 570px) {
+  .form-actu p {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .form-actu .btn-actu {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media (max-width: 990px) {
