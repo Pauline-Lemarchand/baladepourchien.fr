@@ -48,10 +48,10 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 				<div class="mix card card_balade {{ balade.areaBalade }} " style="width: 18rem;">
 					<img class="img_chien" src="{{ asset('uploads/photoBalade/' ~ balade.photoBalade ) }}">
 					<div class="card-body">
-						<h3 class="card-title">{{ balade.nameBalade }}</h3>
-						<h4 class="card-title">Lieu :
+						<h2 class="card-title">{{ balade.nameBalade }}</h2>
+						<h3 class="card-title">Lieu :
 							{{ balade.areaBalade }}
-						</h4>
+						</h3>
 						<p class="card-text">Durée :
 							{{ balade.timeBalade ? balade.timeBalade|date('H:i') : '' }}heure</p>
 						<a href="{{ path('app_balades_show', {'id': balade.id}) }}" class="btn ">Voir plus</a>
@@ -78,7 +78,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 
 <div class="niveau0_btn_autres">
 		<div class="niveau1_btn_autres">
-			<h3>Vous pourriez être interressé par :</h3>
+			<h2>Vous pourriez être interressé par :</h2>
 		</div>
 		<div class="niveau2_btn_autres">
 		<a href="{{ path('app_balades_new') }}">Ajouter une balade</a>

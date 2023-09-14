@@ -29,7 +29,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="" role="button">
+								<a class="nav-link" href="https://www.facebook.com/?locale=fr_FR" role="button">
 									Rejoindre le groupe de balade
 								</a>
 							</li>
@@ -107,13 +107,13 @@ maxZoom: 15
 // Nous parcourons la liste des villes
 {% for balade in balades %}
 
-var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>   {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="   {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">{% endfor %},<a class="btn-choix" href="   {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
+var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(map).bindPopup('<h3>   {{ balade.nameBalade }}</h3> <br>{% for activite in balade.activite %}<img src="   {{ asset('uploads/emoji/' ~ activite.emoji) }}" alt="activité des balades" width="40" height="40">{% endfor %},<a class="btn-choix" href="   {{ path('app_balades_show',{'id':balade.id}) }}">En savoir plus</a> ');{% endfor %}
 		</script>
 		<div class="legende_balade">
 			
 				{% for activite in activites %}
 					<div>
-						<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40">
+						<img src="  {{ asset('uploads/emoji/' ~ activite.emoji) }}" width="40" height="40" alt="activté des balades">
 						{{activite.nameActivite}}
 					</div>
 				{% endfor %}
@@ -140,7 +140,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 	</div>
 
 
-	<a href="" class="btn-tousgroupes">Voir le groupe sur facebook</a>
+	<a href="https://www.facebook.com/?locale=fr_FR" class="btn-tousgroupes">Voir le groupe sur facebook</a>
 
 </div>
 
@@ -154,7 +154,7 @@ var marker = L.marker([{{ balade.latBalade }}, {{ balade.lngBalade }}]).addTo(ma
 
 					<div class="card-body">
 						<h5 class="card-title">{{ conseil.titleConseil }}</h5>
-						<img src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" width="100">
+						<img src="{{ asset('uploads/photoConseil/' ~ conseil.photoConseil ) }}" alt="conseils canin"width="100">
 						<p class="card-text">{{ conseil.textConseil }}</p>
 						<a href="{{ path('app_conseils_show', {'id': conseil.id}) }}" class="btn-tousgroupes">Voir plus</a>
 					</div>
